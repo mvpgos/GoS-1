@@ -5,7 +5,7 @@ require("IWalk")
  
 AddInfo("Thresh", "Thresh")
 AddButton("Q", "Use Q", true)
-AddButton("E", "Use E", true)
+AddButton("E", "Use E", false)  -- false due to inspired.lua bug
 AddButton("R", "Use R", true)
 function AfterObjectLoopEvent(myHero)
     IWalk()
