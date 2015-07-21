@@ -1,5 +1,4 @@
 require("Inspired")
-require("IMenu")
 require("IWalk")
 -- By Support
  
@@ -43,12 +42,10 @@ AddAfterObjectLoopEvent(function(myHero)
            
                     if GetButtonValue("R") then
                     local RPred = GetPredictionForPlayer(GetMyHeroPos(),target,GetMoveSpeed(target),0,250,450,55,false,true)
-
                      if CanUseSpell(myHero, _R) == READY and RPred.HitChance == 1 then
                      CastSkillShot(_R,RPred.PredPos.x,RPred.PredPos.y,RPred.PredPos.z)
                      end
                    end
             end
         end
-    end
 end)
