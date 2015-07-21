@@ -11,11 +11,8 @@ AddButton("R", "Use R", true)
 
 
 OnLoop(function(myHero)
-    local Obj_Type = GetObjectType(Object);
-            if Obj_Type == Obj_AI_Hero then
-
     IWalk()
-     if GetKeyValue("Combo") then
+    if GetKeyValue("Combo") then
         target = GetCurrentTarget()
             if ValidTarget(target, 1100) then
             local QPred = GetPredictionForPlayer(GetMyHeroPos(),target,GetMoveSpeed(target),1900,500,1100,70,true,true)  -- GetPredictionForPlayer(startPosition, targetUnit, targetUnitMoveSpeed, spellTravelSpeed, spellDelay, spellRange, spellWidth, collision, addHitBox)
@@ -26,9 +23,13 @@ OnLoop(function(myHero)
                     end
 
                     if GetButtonValue("W") then -- rango 950
-                        if CanUseSpell(myHero,_W) == READY then
-                        CastTargetSpell(Object,_W)
+					local Ally = GetObjectType(Object);
+                     if Ally == Obj_AI_Hero then
+                        local WPred = GetPredictionForPlayer(GetMyHeroPos(),ally,GetMoveSpeed(ally),1875,250,800,55,false,true)
+                     if CanUseSpell(myHero, _W) == READY and WPred.HitChance == 1 then
+                     CastSkillShot(_W,WPred.PredPos.x,WPred.PredPos.y,WPred.PredPos.z)
                         end
+					 end
                     end
 
  
@@ -47,5 +48,5 @@ OnLoop(function(myHero)
                      end
                    end
             end
-        end
+    end
 end)
