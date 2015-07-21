@@ -10,7 +10,7 @@ AddButton("R", "Use R", true)
 
 
 
-AddAfterObjectLoopEvent(function(myHero)
+OnLoop(function(myHero)
     local Obj_Type = GetObjectType(Object);
             if Obj_Type == Obj_AI_Hero then
 
