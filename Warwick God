@@ -1,0 +1,27 @@
+require("Inspired")
+require("IWalk")
+-- By Support
+ 
+AddInfo("Thresh", "Thresh")
+AddButton("Q", "Use Q", true)
+AddButton("W", "use W", true)
+AddButton("R", "Use R", true)
+ 
+OnLoop(function(myHero)
+    IWalk()
+    if GetKeyValue("Combo") then
+        target = GetCurrentTarget()
+            if ValidTarget(target, 1250) then
+ 
+                if GetButtonValue("Q") then
+                        if CanUseSpell(myHero, _Q) == READY then
+                        CastTargetSpell(target, _Q)
+                                        end
+                end
+ 
+ 
+ 
+ 
+ 
+ 
+((GetCurrentHP(myHero)/(GetMaxHP(myHero)/100))) < 15 then
