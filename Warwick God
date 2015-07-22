@@ -2,9 +2,8 @@ require("Inspired")
 require("IWalk")
 -- By Support
  
-AddInfo("Thresh", "Thresh")
+AddInfo("Warwick", "Warwick")
 AddButton("Q", "Use Q", true)
-AddButton("W", "use W", true)
 AddButton("R", "Use R", true)
  
 OnLoop(function(myHero)
@@ -12,16 +11,42 @@ OnLoop(function(myHero)
     if GetKeyValue("Combo") then
         target = GetCurrentTarget()
             if ValidTarget(target, 1250) then
+			    MHp = GetMaxHP(Target)
+                CHp = GetCurrentHP(Target)
+                Dmg = MHp - CHp
  
                 if GetButtonValue("Q") then
-                        if CanUseSpell(myHero, _Q) == READY then
-                        CastTargetSpell(target, _Q)
-                                        end
+                  if CanUseSpell(myHero, _Q) == READY then
+				  CastTargetSpell(target, _Q)
+                  end
                 end
  
+                if GetButtonValue("R") then
+                 if CanUseSpell(myHero, _R) == READY then
+			      if CalcDamage(myHero, Target, 0, R(Dmg)) > GetCurrentHP(Target) then
+				  CastTargetSpell(target, _R)
+			      end
+	             end
+				end
+			end
+	end
+end)
+
+function rDmg()
+
+ if GetCastLevel(myHero, _R) == 0 then
+  return 0
+ end
  
+ if GetCastLevel(myHero, _R) == 1 then
+  return 150 + ((GetBonusAD(myHero)/100)*200)
+ end 
  
+ if GetCastLevel(myHero, _R) == 2 then
+  return 250 + ((GetBonusAD(myHero)/100)*200)
+ end
  
- 
- 
-((GetCurrentHP(myHero)/(GetMaxHP(myHero)/100))) < 15 then
+ if GetCastLevel(myHero, _R) == 3 then
+  return 350 + ((GetBonusAD(myHero)/100)*200)
+ end 
+end
