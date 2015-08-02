@@ -1,20 +1,16 @@
-require("Inspired")
-require("IWalk")
 -- By Support
- 
-AddInfo("Thresh", "Thresh")
-AddButton("Q", "Use Q", true)
-AddButton("W", "use W", true)
-AddButton("E", "Use E", true)
-AddButton("R", "Use R", true)
+Config = scriptConfig("Thresh", "Thresh:")
+Config.addParam("Q", "Use Q", SCRIPT_PARAM_ONOFF, true)
+Config.addParam("E", "Use E", SCRIPT_PARAM_ONOFF, true)
+Config.addParam("R", "Use R", SCRIPT_PARAM_ONOFF, true)
 
 
 
 OnLoop(function(myHero)
-    IWalk()
-    if GetKeyValue("Combo") then
-        target = GetCurrentTarget()
-            if ValidTarget(target, 1100) then
+    if IWalkConfig.Combo then
+	       local target = GetTarget(1100, DAMAGE_MAGIC)
+	        if ValidTarget(target, 1100) then
+	                	
             local QPred = GetPredictionForPlayer(GetMyHeroPos(),target,GetMoveSpeed(target),1900,500,1100,70,true,true)  -- GetPredictionForPlayer(startPosition, targetUnit, targetUnitMoveSpeed, spellTravelSpeed, spellDelay, spellRange, spellWidth, collision, addHitBox)
                     if GetButtonValue("Q") then
                      if CanUseSpell(myHero, _Q) == READY and QPred.HitChance == 1 then
@@ -49,4 +45,3 @@ OnLoop(function(myHero)
                    end
             end
     end
-end)
