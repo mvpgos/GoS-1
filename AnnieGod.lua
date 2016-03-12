@@ -21,12 +21,6 @@ require('Inspired')
 LoadIOW()
 
 
-AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", false)
-AnnieMenu.Drawings:Boolean("W", "Draw W Range", false)
-AnnieMenu.Drawings:Boolean("E", "Draw E Range", false)
-AnnieMenu.Drawings:Boolean("R", "Draw R Range", false)
-AnnieMenu.Drawings:Boolean("DrawText", "Draw Selected Text", false)
-
 OnDraw(function(myHero)
 local pos = GetOrigin(myHero)
 if AnnieMenu.Drawings.Q:Value() then DrawCircle(pos,625,1,10,GoS.Red) end
