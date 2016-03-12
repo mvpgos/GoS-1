@@ -20,14 +20,6 @@ end
 require('Inspired')
 LoadIOW()
 
-local AnnieMenu = MenuConfig("Annie", "Annie")
-
-AnnieMenu:Menu("Drawings", "Drawings")
-AnnieMenu:SubMenu("Combo", "Combo")
-AnnieMenu.Combo:Boolean("Q", "Use Q", true)
-AnnieMenu.Combo:Boolean("W", "Use W", true)
-AnnieMenu.Combo:Boolean("R", "Use R", true)
-AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
 
 AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", false)
 AnnieMenu.Drawings:Boolean("W", "Draw W Range", false)
