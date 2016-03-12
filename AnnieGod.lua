@@ -10,7 +10,7 @@ function AutoUpdate(data)
     end
 end
 
-GetWebResultAsync("https://raw.githubusercontent.com/D3ftsu/GoS/master/ChallengerSeries.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.version", AutoUpdate)
 
 
 if GetObjectName(GetMyHero()) ~= "Annie" then 
