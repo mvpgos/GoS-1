@@ -18,7 +18,7 @@ if GetObjectName(GetMyHero()) ~= "Annie" then
 end
 
 require('Inspired')
-
+LoadIOW()
 
 local AnnieMenu = MenuConfig("Annie", "Annie")
 
