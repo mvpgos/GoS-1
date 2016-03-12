@@ -1,4 +1,4 @@
-local ver = "0.1"
+local ver = "0.11"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -18,7 +18,6 @@ if GetObjectName(GetMyHero()) ~= "Annie" then
 end
 
 require('Inspired')
-LoadIOW()
 
 
 OnDraw(function(myHero)
