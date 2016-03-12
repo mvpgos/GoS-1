@@ -1,4 +1,4 @@
-local ver = "0.11"
+local ver = "0.12"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -18,6 +18,23 @@ if GetObjectName(GetMyHero()) ~= "Annie" then
 end
 
 require('Inspired')
+LoadIOW()
+
+
+local AnnieMenu = MenuConfig("Annie", "Annie")
+
+AnnieMenu:Menu("Drawings", "Drawings")
+AnnieMenu:SubMenu("Combo", "Combo")
+AnnieMenu.Combo:Boolean("Q", "Use Q", true)
+AnnieMenu.Combo:Boolean("W", "Use W", true)
+AnnieMenu.Combo:Boolean("R", "Use R", true)
+AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
+
+
+ AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
+ AnnieMenu.Drawings:Boolean("W", "Draw W Range", true)
+ AnnieMenu.Drawings:Boolean("E", "Draw E Range", true)
+ AnnieMenu.Drawings:Boolean("R", "Draw R Range", true)
 
 
 OnDraw(function(myHero)
