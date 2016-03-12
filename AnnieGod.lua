@@ -1,4 +1,4 @@
-local ver = "0.12"
+local ver = "0.13"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -36,6 +36,12 @@ AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
  AnnieMenu.Drawings:Boolean("E", "Draw E Range", true)
  AnnieMenu.Drawings:Boolean("R", "Draw R Range", true)
 
+local manaQ = GetCastMana(myHero, _Q, GetCastLevel(myHero,_Q))
+local manaW = GetCastMana(myHero, _W, GetCastLevel(myHero,_W))
+local manaR = GetCastMana(myHero, _R, GetCastLevel(myHero,_R))
+
+
+
 
 OnDraw(function(myHero)
 local pos = GetOrigin(myHero)
@@ -48,7 +54,9 @@ OnTick(function(myHero)
     local target = GetCurrentTarget()
 	
 	
-    if IOW:Mode() == "Combo" then
+    if  GetCurrentMana(myHero) > manaQ + manaW + manaR and IOW:Mode() == "Combo" then
+	
+	
     	if AnnieMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
     		CastTargetSpell(target , _Q)
     	end
