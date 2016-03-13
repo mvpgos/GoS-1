@@ -1,4 +1,4 @@
-local ver = "0.20"
+local ver = "0.21"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -104,9 +104,9 @@ SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_
 	
 	if IOW:Mode() == "Combo" then
 	
-	if MalphiteMenu.Combo.Smite:Value() and if SmiteSlot ~= nil and Ready(_SmiteSlot) and ValidTarget(target, 500) then
+	if MalphiteMenu.Combo.Smite:Value() and if SmiteSlot ~= nil and Ready(SmiteSlot) and ValidTarget(target, 500) then
 	
-	CastTargetSpell(target , _SmiteSlot)
+	CastTargetSpell(target , SmiteSlot)
 	
 	end 
 	
