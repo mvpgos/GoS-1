@@ -1,4 +1,5 @@
-local ver = "0.16"
+local ver = "0.17"
+
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New version found! " .. data)
@@ -76,7 +77,7 @@ OnTick(function(myHero)
 			
     	end
 		
-	if MalphiteMenu.Combo.E:Value() and Ready(_W) and ValidTarget(target, 125) then 
+	if MalphiteMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then 
     			local targetPos = GetOrigin(target)
 				
     			CastSkillShot(_W , targetPos)
@@ -86,7 +87,7 @@ OnTick(function(myHero)
 	if MalphiteMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 200) then 
     			local targetPos = GetOrigin(target)
 				
-    			CastSkillShot(_W , targetPos)
+    			CastSkillShot(_E , targetPos)
 				
     	end
 		
