@@ -1,4 +1,4 @@
-local ver = "0.14"
+local ver = "0.15"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -80,7 +80,7 @@ OnTick(function(myHero)
 	if MalphiteMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 200) then 
     			local targetPos = GetOrigin(target)
 				
-    			CastSkillShot(_W , targetPos)
+    			CastSkillShot(_E , targetPos)
 				
     	end
 		
