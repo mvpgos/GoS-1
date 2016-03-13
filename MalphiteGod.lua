@@ -1,4 +1,4 @@
-local ver = "0.19"
+local ver = "0.20"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -141,9 +141,3 @@ SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_
 )
 	
 
-	local ultimate = { delay = 0.00, speed = 1835, width = 300, range = 1000 }
-local pI = GetPrediction(target, ultimate)
-
-if ValidTarget(target, 1000) and pI and pI.hitChance >= 0.25 and not pI:mCollision(1) then
-    CastSkillShot(_R, pI.castPos)
-end
