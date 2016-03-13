@@ -1,4 +1,4 @@
-local ver = "0.12"
+local ver = "0.1"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -69,6 +69,8 @@ OnTick(function(myHero)
 
     local target = GetCurrentTarget()
 	
+	if IOW:Mode() == "Combo" then
+	
 	if MalphiteMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
 	
     		CastTargetSpell(target , _Q)
@@ -88,6 +90,7 @@ OnTick(function(myHero)
     			CastSkillShot(_R , targetPos)
 				
     	end
+	end
 	end
 )
 	
