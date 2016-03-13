@@ -119,14 +119,14 @@ SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_
 	if MalphiteMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 125) then 
     			local targetPos = GetOrigin(target)
 				
-    			CastSkillShot(_W , targetPos)
+    			CastSpell(_W)
 				
     	end
 		
 	if MalphiteMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 200) then 
     			local targetPos = GetOrigin(target)
 				
-    			CastSkillShot(_E , targetPos)
+    			CastSpell(_E)
 				
     	end
 		
