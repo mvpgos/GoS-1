@@ -1,4 +1,4 @@
-local ver = "0.18"
+local ver = "0.19"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -45,6 +45,8 @@ MalphiteMenu:Menu("Drawings", "Drawings")
 		
 		MalphiteMenu.Combo:Boolean("R", "Use R", true)
 		
+		MalphiteMenu.Combo:Boolean("Smite", "Use Smite", true)
+		
 		
 MalphiteMenu.Drawings:Boolean("Q", "Draw Q Range", true)
 
@@ -67,9 +69,18 @@ end)
 
 OnTick(function(myHero)
 
+SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_1 or (GetCastName(myHero, SUMMONER_2):lower():find("smite")
+ and SUMMONER_2 or nil))
+
     local target = GetCurrentTarget()
 	
 	if IOW:Mode() == "Combo" then
+	
+	if MalphiteMenu.Combo.Smite:Value() and if SmiteSlot ~= nil and Ready(_SmiteSlot) and ValidTarget(target, 500) then
+	
+	CastTargetSpell(target , _SmiteSlot)
+	
+	end 
 	
 	if MalphiteMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
 	
@@ -105,13 +116,6 @@ OnTick(function(myHero)
 	local ultimate = { delay = 0.00, speed = 1835, width = 300, range = 1000 }
 local pI = GetPrediction(target, ultimate)
 
-if pI and pI.hitChance >= 0.25 and not pI:mCollision(1) then
+if ValidTarget(target, 1000) and pI and pI.hitChance >= 0.25 and not pI:mCollision(1) then
     CastSkillShot(_R, pI.castPos)
 end
-		
-		
-		
-		
-		
-		
-		
