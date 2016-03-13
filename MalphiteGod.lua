@@ -89,6 +89,7 @@ OnTick(function(myHero)
 				
     	end
 	end
+end)
 	
 
 	local ultimate = { delay = 0.00, speed = 1835, width = 300, range = 1000 }
