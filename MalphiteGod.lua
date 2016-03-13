@@ -1,4 +1,4 @@
-local ver = "0.22"
+local ver = "0.23"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -13,7 +13,7 @@ end
 GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/MalphiteGod.version", AutoUpdate)
 
 
---[                                                                       .uuu
+--[[                                                                       .uuu
     z@#"%c                      .uuzm**"""""*%mu..             z*"` .e@#N      
    @!!!R.  #c              .z*"                    ^*c       z    dT!!!!!>     
   '!!!!!!N   "i         u*"                            #s  :"   @?!!!!!!!R     
@@ -41,7 +41,7 @@ GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/Malphi
                         '*.      W'$$$$$$$$FM h    u#                          
                            ^*muz* % $$$$$$":    `"                             
                                    # ^**" d                                    
-                                     "***" --]
+                                     "***" --]]
 
 
 
