@@ -1,4 +1,4 @@
-local ver = "0.13"
+local ver = "0.14"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -57,11 +57,11 @@ OnDraw(function(myHero)
 
 local pos = GetOrigin(myHero)
 
-	if MalphiteMenu.Drawings.Q:Value() then DrawCircle(pos,625,1,10,GoS.Red) end
+	if MalphiteMenu.Drawings.Q:Value() then DrawCircle(pos,625,2,20,GoS.Red) end
 
-	if MalphiteMenu.Drawings.E:Value() then DrawCircle(pos,200,1,10,GoS.Yellow) end
+	if MalphiteMenu.Drawings.E:Value() then DrawCircle(pos,200,2,20,GoS.Yellow) end
 
-	if MalphiteMenu.Drawings.R:Value() then DrawCircle(pos,1000,1,10,GoS.Pink) end
+	if MalphiteMenu.Drawings.R:Value() then DrawCircle(pos,1000,2,20,GoS.Pink) end
 
 end)
 
