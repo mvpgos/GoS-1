@@ -1,4 +1,4 @@
-local ver = "0.17"
+local ver = "0.18"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -103,7 +103,7 @@ OnTick(function(myHero)
 	
 
 	local ultimate = { delay = 0.00, speed = 1835, width = 300, range = 1000 }
-local pI = GetPrediction(myHero, ultimate)
+local pI = GetPrediction(target, ultimate)
 
 if pI and pI.hitChance >= 0.25 and not pI:mCollision(1) then
     CastSkillShot(_R, pI.castPos)
