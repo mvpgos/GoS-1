@@ -4,13 +4,13 @@ function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New version found! " .. data)
         PrintChat("Downloading update, please wait...")
-        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.lua", SCRIPT_PATH .. "AnnieGod.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
+        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/MalphiteGod.lua", SCRIPT_PATH .. "MalphiteGod.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
     else
         PrintChat("No updates found!")
     end
 end
 
-GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/MalphiteGod.version", AutoUpdate)
 
 
 
@@ -75,14 +75,14 @@ OnTick(function(myHero)
 			
     	end
 		
-	if AnnieMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 200) then 
+	if MalphiteMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 200) then 
     			local targetPos = GetOrigin(target)
 				
     			CastSkillShot(_W , targetPos)
 				
     	end
 		
-	if AnnieMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 1000) then 
+	if MalphiteMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 1000) then 
     			local targetPos = GetOrigin(target)
 				
     			CastSkillShot(_R , targetPos)
