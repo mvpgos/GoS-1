@@ -1,4 +1,8 @@
-local ver = "0.23"
+if GetObjectName(GetMyHero()) ~= "Malphite" then 
+	return 
+end
+
+local ver = "0.24"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -52,9 +56,7 @@ GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/Malphi
 
 
 
-if GetObjectName(GetMyHero()) ~= "Malphite" then 
-	return 
-end
+
 
 require("Inspired")
 require("OpenPredict")
