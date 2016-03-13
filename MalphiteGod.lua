@@ -1,4 +1,4 @@
-local ver = "0.1"
+local ver = "0.11"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -69,7 +69,7 @@ OnTick(function(myHero)
 
     local target = GetCurrentTarget()
 	
-	MalphiteMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+	if MalphiteMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
 	
     		CastTargetSpell(target , _Q)
 			
