@@ -1,4 +1,4 @@
-local ver = "0.02"
+local ver = "0.03"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -408,7 +408,7 @@ if FiddlesticksMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 575) t
 
 end
 
-end)
+)
 
  -- This has been all friends.
 
