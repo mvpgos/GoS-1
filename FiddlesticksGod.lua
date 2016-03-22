@@ -1,4 +1,4 @@
-local ver = "0.01"
+local ver = "0.02"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -334,17 +334,17 @@ local target = GetCurrentTarget()
   if IOW:Mode() == "Combo" then
 
 
-    if manaQ + manaW + manaE + manaR < GetCurrentMana(myHero) then -- if currentMana > Q+W+E+R mana then continue combo :D
+   
 
 
     if FiddlesticksMenu.Combo.Smite:Value() and SmiteSlot ~= nil and Ready(SmiteSlot) and ValidTarget(target, 500) then
   
   CastTargetSpell(target , SmiteSlot)
   
-  end 
+ 
   end
 
-
+ if manaQ + manaW + manaE + manaR < GetCurrentMana(myHero) then -- if currentMana > Q+W+E+R mana then continue combo :D
 
 if FiddlesticksMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 800) then
 
@@ -394,7 +394,8 @@ if FiddlesticksMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 575) t
 
       CastTargetSpell(target , _W)
 
-  end
+end
+end
 end
 end)
 
