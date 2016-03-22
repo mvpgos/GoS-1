@@ -1,4 +1,4 @@
-local ver = "0.05"
+local ver = "0.04"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -77,19 +77,6 @@ local igniteFound = false
 
 
 local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}}
-
-
-
-if GetObjectName(GetMyHero()) ~= "Fiddlesticks" then 
-
-  return 
-
-end
-
-
-require("Inspired")
-
-
 
 
 local FiddlesticksMenu = MenuConfig("Fiddlesticks", "Fiddlesticks")
