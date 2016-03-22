@@ -1,10 +1,10 @@
-local ver = "0.01"
+local ver = "0.02"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New version found! " .. data)
         PrintChat("Downloading update, please wait...")
-        DownloadFileAsync("https://github.com/estruptum/GoS/blob/master/Fiddlesticks.lua", SCRIPT_PATH .. "AnnieGod.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
+        DownloadFileAsync("https://github.com/estruptum/GoS/blob/master/Fiddlesticks.lua", SCRIPT_PATH .. "Fiddlesticks.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
     else
         PrintChat("No updates found!")
     end
