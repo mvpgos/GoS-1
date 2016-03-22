@@ -312,6 +312,7 @@ function DrawDMG(target)
 
 
 end
+end
 
 
 
@@ -354,6 +355,8 @@ local target = GetCurrentTarget()
   CastTargetSpell(target , SmiteSlot)
   
   end 
+  end
+
 
 
 if FiddlesticksMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 800) then
@@ -405,10 +408,9 @@ if FiddlesticksMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 575) t
       CastTargetSpell(target , _W)
 
   end
-
 end
+end)
 
-)
 
  -- This has been all friends.
 
