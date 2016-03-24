@@ -93,9 +93,9 @@ end
   
       if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
 	  
-          igniteFound = true
+          self.igniteFound = true
 		  
-          summonerSpells.ignite = SUMMONER_1
+          self.summonerSpells.ignite = SUMMONER_1
 		  
           FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
 		  
@@ -103,9 +103,9 @@ end
 		  
       elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
 	  
-          igniteFound = true
+          self.igniteFound = true
 		  
-          summonerSpells.ignite = SUMMONER_2
+          self.summonerSpells.ignite = SUMMONER_2
 		  
           FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
 		  
