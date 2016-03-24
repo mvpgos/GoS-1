@@ -1,3 +1,8 @@
+-- 26643ex2366v23nn654m99.b4ewwx11.v12
+
+
+
+
 -- Welcome to GodSeriesAIO
 
 -- By Zeyx
@@ -34,6 +39,19 @@
                                      "***" --]]
 
 
+
+									 
+function AutoUpdate(data)
+    if tonumber(data) > tonumber(ver) then
+        PrintChat("New version found! " .. data)
+        PrintChat("Downloading update, please wait...")
+        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GodSeriesAIO.lua", SCRIPT_PATH .. "GodSeriesAIO.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
+    else
+        PrintChat("No updates found!")
+    end
+end
+
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GodSeriesAIO.version", AutoUpdate)
 
 
 
