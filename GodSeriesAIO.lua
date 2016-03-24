@@ -174,7 +174,7 @@ if not unit or not buff then
 end
 
 
-function Fiddlestiscks:Tick(
+function Fiddlestiscks:Tick()
 local manaQ = myHero:GetSpellData(_Q).mana         -- Needed mana to cast ability
 
 local manaW = myHero:GetSpellData(_W).mana         -- Needed mana to cast ability    
@@ -216,9 +216,9 @@ if FiddlesticksMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 575) t
 
   end
 end
-end)
+end
 
-function Fiddlestiscks:Draw(
+function Fiddlestiscks:Draw()
 
   local target = GetCurrentTarget()
   
@@ -234,7 +234,7 @@ local pos = GetOrigin(myHero)
   
   if FiddlesticksMenu.Drawings.R:Value() then DrawCircle(pos,800,2,20,GoS.Pink) end
   
-end)
+end
 
 
 
@@ -262,7 +262,7 @@ function Malphite:__init()
   end
   
   
- function Malphite:Tick(
+ function Malphite:Tick()
 
 local manaQ = myHero:GetSpellData(_Q).mana         -- Needed mana to cast ability
 
@@ -322,9 +322,9 @@ local manaR = myHero:GetSpellData(_R).mana         -- Needed mana to cast abilit
 	
   else DrawText(" Not Enough Mana For Full Combo ", 20, 250, 250, GoS.Cyan)
   end
- end)
+ end
  
- function Malphite:Draw(
+ function Malphite:Draw()
  
  local pos = GetOrigin(myHero)
 
@@ -334,7 +334,7 @@ local manaR = myHero:GetSpellData(_R).mana         -- Needed mana to cast abilit
 
 	if MalphiteMenu.Drawings.R:Value() then DrawCircle(pos,1000,2,20,GoS.Pink) end
 	
-end)
+end
 
 
 -- [[[[[[[[[[[[[[]]]]]]]]]]]]]] --
@@ -362,7 +362,7 @@ function Annie:__init()
   
   end
   
-  function Annie:Tick(
+  function Annie:Tick()
   
   local target = GetCurrentTarget()
 	
@@ -402,10 +402,10 @@ for _, enemy in pairs(GetEnemyHeroes()) do
 	end
 	end
 	end
-	end)
+	end
 	
 	
-	function Annie:Draw(
+	function Annie:Draw()
 	
 	local pos = GetOrigin(myHero)
 	
@@ -415,7 +415,7 @@ if AnnieMenu.Drawings.W:Value() then DrawCircle(pos,625,1,10,GoS.Yellow) end
 
 if AnnieMenu.Drawings.R:Value() then DrawCircle(pos,600,1,10,GoS.Pink) end
 
-end)
+end
 
 if not _G[GetObjectName(myHero)] then PrintChat(" "..GetObjectName(myHero).." Is Not Supported !") return end 
 _G[GetObjectName(myHero)]()
