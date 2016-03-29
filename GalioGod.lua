@@ -1,4 +1,4 @@
-local ver = "0.01"
+local ver = "0.02"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -216,7 +216,7 @@ local target = GetCurrentTarget()
   	if GalioMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 940) then 
   		local QPred = { delay = 0.25, speed = 1200, width = 235, range = 940 } 
   		local pI = GetPrediction(unit, QPred)
-  		if pI and pI.hitChance >= 0.25 and not pI:mCollision(1) then
+  		if pI and pI.hitChance >= 0.25  then
     	CastSkillShot(_Q, pI.castPos)
 		end
     end
@@ -225,7 +225,7 @@ local target = GetCurrentTarget()
     if GalioMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 1180) then
     	local EPred = { delay = 0.00, speed = 1300, width = 160, range = 1180 } 
   		local GonnaHitYa = GetPrediction(unit, EPred)
-  		if GonnaHitYa and GonnaHitYa.hitChance >= 0.20 and not GonnaHitYa:mCollision(1) then
+  		if GonnaHitYa and GonnaHitYa.hitChance >= 0.20  then
     	CastSkillShot(_E, GonnaHitYa.castPos)
 		end
     end
