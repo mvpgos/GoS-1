@@ -10,7 +10,7 @@ function AutoUpdate(data)
     end
 end
 
-GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/Galio.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/galio.version", AutoUpdate)
 
 
 
