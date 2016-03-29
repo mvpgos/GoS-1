@@ -79,7 +79,7 @@ local igniteFound = false
 local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}}
 
 
-local FiddlesticksMenu = MenuConfig("Fiddlesticks", "Fiddlesticks")
+local FiddlesticksMenu = MenuConfig("FiddleSticks", "FiddleSticks")
 
 
 FiddlesticksMenu:Menu("Drawings", "Drawings")
