@@ -1,4 +1,4 @@
-local ver = "0.03"
+local ver = "0.04"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -19,7 +19,7 @@ GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/Fiddle
 
 
 
-if GetObjectName(GetMyHero()) ~= "Fiddlesticks" then 
+if GetObjectName(GetMyHero()) ~= "FiddleSticks" then 
 	return 
 end
 
