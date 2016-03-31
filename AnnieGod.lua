@@ -1,5 +1,5 @@
 
-local ver = "2.032"
+local ver = "2.033"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -16,6 +16,8 @@ GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieG
 
 if GetObjectName(GetMyHero()) ~= "Annie" then return end
 
+local AnnieP = 0
+local FlashSlot = GetCastName(myHero, SUMMONER_1):lower():find("flash") and SUMMONER_1 or GetCastName(myHero, SUMMONER_2):lower():find("flash") and SUMMONER_2 or nil
 local IgniteSlot = GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") and SUMMONER_1 or GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") and SUMMONER_2 or nil
 local AnnieMenu = MenuConfig("Annie", "Annie")
 
@@ -25,8 +27,8 @@ AnnieMenu.Combo:Boolean("Q", "Use Q", true)
 AnnieMenu.Combo:Boolean("W", "Use W", true)
 AnnieMenu.Combo:Boolean("R", "Use R", true)
 AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
-AnnieMenu.Combo:Boolean("Ignite", "Use Ignite", true)
 if IgniteSlot ~= nil then AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true) end
+if FlashSlot ~= nil then AnnieMenu.Combo:Boolean("flash", "Auto Flash", true) end
 
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
@@ -40,6 +42,7 @@ OnDraw(function(myHero)
     if AnnieMenu.Drawings.W:Value() then DrawCircle(pos, 625, 1, 10, GoS.Yellow) end
     if AnnieMenu.Drawings.R:Value() then DrawCircle(pos, 600, 1, 10, GoS.Pink) end
      if IOW:Mode() == "Combo" then DrawDMG() end
+     DrawText(annieP, 20, myHero.pos.x, myHero.pos.y, GoS.White)
 end)
 
 function DrawDMG()
@@ -74,14 +77,38 @@ function DrawDMG()
 end
 
 
+OnUpdateBuff (function(o, buff)
+  if o == myHero and o.dead == false then
+        if buff.Name:lower() == "pyromania" then
+         annieP = buff.Count
+        end
+  end
+end)
+
+OnRemoveBuff(function(o, buff)
+    if o == myHero and o.dead == false then
+      if buff.Name:lower() == "pyromania" then
+       annieP = 0
+    end
+end)
+
+  
+
 OnTick(function(myHero)
     local target = GetCurrentTarget()
 
     if IOW:Mode() == "Combo" then
+      
+-- below |||||| the stun manager
 
-        if IgniteSlot ~= nil and Ready(IgniteSlot) and ValidTarget(target, 600) then
-            if AnnieMenu.Combo.Ignite:Value() then CastTargetSpell(target, IgniteSlot) end
-        end
+     
+-- above ^^^^^^^^^^ the stun manager 
+
+
+      if IgniteSlot ~= nil and Ready(IgniteSlot) and ValidTarget(target, 600) then
+          if AnnieMenu.Combo.Ignite:Value() then CastTargetSpell(target, IgniteSlot) 
+          end
+      end
   
       if AnnieMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
         CastTargetSpell(target, _Q)
