@@ -1,4 +1,4 @@
-local ver = "0.04"
+local ver = "0.05"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -133,7 +133,7 @@ OnLoad (function()
           summonerSpells.ignite = SUMMONER_1
 
 
-          FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+          FiddlesticksMenu.Combo:Boolean("ignite", "Auto Ignite", true)
 
 
       elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
@@ -144,7 +144,7 @@ OnLoad (function()
           summonerSpells.ignite = SUMMONER_2
 
 
-          FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+          FiddlesticksMenu.Combo:Boolean("ignite", "Auto Ignite", true)
 
 
       end
@@ -295,7 +295,7 @@ function DrawDMG(target)
 
     DrawText(target.charName.." is killable ", 11, 350, 350, GoS.Cyan)
 
-  DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
+  -- under work DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
 
 
 end
