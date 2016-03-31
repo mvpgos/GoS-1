@@ -3,7 +3,7 @@ if GetObjectName(GetMyHero()) ~= "Malphite" then
 end
 
 local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}}
-local ver = "1.0"
+local ver = "1.10"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -182,8 +182,8 @@ SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_
       end
     
   if MalphiteMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 1000) then 
-    if EnemiesAround(GetOrigin(myHero), 1000) >= MalphiteMenu.Combo.rSS:Value() then
-          local targetPos = GetOrigin(target)
+    local targetPos = GetOrigin(target)
+    if EnemiesAround(targetPos, 500) >= MalphiteMenu.Combo.rSS:Value() then
         
           CastSkillShot(_R , targetPos)
         
