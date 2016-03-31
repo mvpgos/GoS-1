@@ -1,4 +1,4 @@
-local ver = "2.0"
+local ver = "2.01"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -58,7 +58,7 @@ end
 
 require('Inspired')
 
-
+local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}}
 local AnnieMenu = MenuConfig("Annie", "Annie")
 
 AnnieMenu:Menu("Drawings", "Drawings")
