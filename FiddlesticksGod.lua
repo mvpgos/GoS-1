@@ -1,4 +1,4 @@
-local ver = "0.05"
+local ver = "0.06"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -20,7 +20,7 @@ GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/Fiddle
 
 
 if GetObjectName(GetMyHero()) ~= "FiddleSticks" then 
-	return 
+  return 
 end
 
 
@@ -56,10 +56,10 @@ end
                            ^*muz* % $$$$$$":    `"                             
                                    # ^**" d                                    
                                      "***" --]]
-									 
-									 
-	--LIBS NEEDED								 
-									 
+                   
+                   
+  --LIBS NEEDED                
+                   
 require("Inspired")
 
 
@@ -85,26 +85,28 @@ local FiddlesticksMenu = MenuConfig("FiddleSticks", "FiddleSticks")
 FiddlesticksMenu:Menu("Drawings", "Drawings")
 
 
-	FiddlesticksMenu:SubMenu("Combo", "Combo")
+  FiddlesticksMenu:SubMenu("Combo", "Combo")
 
-	
-		FiddlesticksMenu.Combo:Boolean("Q", "Use Q", true)
+  
+    FiddlesticksMenu.Combo:Boolean("Q", "Use Q", true)
 
-		
-		FiddlesticksMenu.Combo:Boolean("W", "Use W", true)
+    
+    FiddlesticksMenu.Combo:Boolean("W", "Use W", true)
 
-		
-		FiddlesticksMenu.Combo:Boolean("E", "Use E", true)
+    
+    FiddlesticksMenu.Combo:Boolean("E", "Use E", true)
 
-		
-		FiddlesticksMenu.Combo:Boolean("R", "Use R", true)
+    
+    FiddlesticksMenu.Combo:Boolean("R", "Use R", true)
 
-		
-		FiddlesticksMenu.Combo:Boolean("Smite", "Use Smite", true)
+    
+    FiddlesticksMenu.Combo:Boolean("Smite", "Use Smite", true)
+    FiddlesticksMenu.Combo:Boolean("Ignite", "Use Ignite", true)
+    if IgniteSlot ~= nil then FiddlesticksMenu.Combo:Boolean("ignite", "Auto Ignite", true) end
 
 
 
-		
+    
 FiddlesticksMenu.Drawings:Boolean("Q", "Draw Q Range", true)
 
 
@@ -220,7 +222,43 @@ end)
 ------------------------
 
 
+
+function DrawDMG(target)
+
+
+  local wDMG = 0
+  local eDMG = 0
+  local rDMG = 0
+    for i, enemy in pairs(GetEnemyHeroes()) do
+     if ValidTarget(enemy) then 
+  if Ready(_W) then
+    wDMG = CalcDamage(myHero, target, 0, (30*GetCastLevel(myHero,_W)+30+(0.45*(GetBonusAP(myHero)))))
+  end
+
+  if Ready(_E) then
+    eDMG = CalcDamage(myHero, target, 0, (20*GetCastLevel(myHero,_E)+45+(0.45*(GetBonusAP(myHero)))))
+  end
+
+  if Ready(_R) then
+    rDMG = CalcDamage(myHero, target, 0, (100*GetCastLevel(myHero,_R)+25+(0.45*(GetBonusAP(myHero)))))
+  end
+
+
+  FullDmg = wDMG + wDMG + rDMG
+
+  if FullDmg > GetCurrentHP(target) then
+        DrawText3D("Full Combo Killable", enemy.pos.x, enemy.pos.y, enemy.pos.z, 15, GoS.Red, true)
+      end
+
+       DrawDmgOverHpBar(enemy, enemy.health, 0, FullDmg, GoS.White)
+    end
+end
+end
+
+
 OnDraw(function(myHero)
+
+
 
 
   local target = GetCurrentTarget()
@@ -243,68 +281,9 @@ local pos = GetOrigin(myHero)
 
   if FiddlesticksMenu.Drawings.R:Value() then DrawCircle(pos,800,2,20,GoS.Pink) end
 
+  if IOW:Mode() == "Combo" then DrawDMG() end
 
 end)
-
-
-function DrawDMG(target)
-
-
-  local wDMG = 0
-
-
-  local eDMG = 0
-
-
-  local rDMG = 0
-
-
-  if Ready(_W) then
-
-
-    wDMG = CalcDamage(myHero, target, 0, (30*GetCastLevel(myHero,_W)+30+(0.45*(GetBonusAP(myHero)))))
-
-
-  end
-
-
-  if Ready(_E) then
-
-
-    eDMG = CalcDamage(myHero, target, 0, (20*GetCastLevel(myHero,_E)+45+(0.45*(GetBonusAP(myHero)))))
-
-
-  end
-
-
-  if Ready(_R) then
-
-
-    rDMG = CalcDamage(myHero, target, 0, (100*GetCastLevel(myHero,_R)+25+(0.45*(GetBonusAP(myHero)))))
-
-
-  end
-
-
-  local DPS = wDMG + eDMG + rDMG
-
-
-  
-
-  if DPS > GetCurrentHP(target) then
-
-    DrawText(target.charName.." is killable ", 11, 350, 350, GoS.Cyan)
-
-  -- under work DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
-
-
-end
-end
-
-
-
-
-
 
 
 
@@ -313,92 +292,62 @@ end
 OnTick(function()
 
 
-local manaQ = myHero:GetSpellData(_Q).mana         -- Needed mana to cast ability
+  local manaQ = myHero:GetSpellData(_Q).mana         -- Needed mana to cast ability
 
 
-local manaW = myHero:GetSpellData(_W).mana         -- Needed mana to cast ability    
+  local manaW = myHero:GetSpellData(_W).mana         -- Needed mana to cast ability    
 
 
-local manaE = myHero:GetSpellData(_E).mana         -- Needed mana to cast ability  
+  local manaE = myHero:GetSpellData(_E).mana         -- Needed mana to cast ability  
 
 
-local manaR = myHero:GetSpellData(_R).mana         -- Needed mana to cast ability
+  local manaR = myHero:GetSpellData(_R).mana         -- Needed mana to cast ability
 
 
-SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_1 or (GetCastName(myHero, SUMMONER_2):lower():find("smite")
+  SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_1 or (GetCastName(myHero, SUMMONER_2):lower():find("smite")
  and SUMMONER_2 or nil))     -- Smite check 
 
 
-local target = GetCurrentTarget()
+  local target = GetCurrentTarget()
   
   if IOW:Mode() == "Combo" then
 
+        if IgniteSlot ~= nil and Ready(IgniteSlot) and ValidTarget(target, 600) then
+        if AnnieMenu.Combo.Ignite:Value() then CastTargetSpell(target, IgniteSlot) end
+        end
 
-   
-
-
-    if FiddlesticksMenu.Combo.Smite:Value() and SmiteSlot ~= nil and Ready(SmiteSlot) and ValidTarget(target, 500) then
-  
+    if FiddlesticksMenu.Combo.Smite:Value() and SmiteSlot ~= nil and Ready(SmiteSlot) and ValidTarget(target, 500) then 
   CastTargetSpell(target , SmiteSlot)
-  
- 
   end
 
- if manaQ + manaW + manaE + manaR < GetCurrentMana(myHero) then -- if currentMana > Q+W+E+R mana then continue combo :D
 
 if FiddlesticksMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 800) then
 
     if Ready(_R) and not castingW then
-
       CastTargetSpell(target , _R)
-
     end
-
   end
 
-
-
-
-if FiddlesticksMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 575) then  
-
-
-    if Ready(_Q) and not castingW then 
-
-      CastTargetSpell(target , _Q)
-
+   if FiddlesticksMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 575) then  
+      if Ready(_Q) and not castingW then 
+        CastTargetSpell(target , _Q)
       end
-
     end
-
-
-
 
   if FiddlesticksMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 750) then
-
     if Ready(_E) and not castingW then
-
       CastTargetSpell(target , _E)
-
     end
-
   end
-
-
-
-  
-
 
     if FiddlesticksMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 575) then
 
-    
-
       CastTargetSpell(target , _W)
 
-end
-end
-end
-end)
+    end
+  end 
 
+end)
 
  -- This has been all friends.
 
