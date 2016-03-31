@@ -1,4 +1,4 @@
-local ver = "0.13"
+local ver = "2.0"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -50,8 +50,65 @@ if AnnieMenu.Drawings.W:Value() then DrawCircle(pos,625,1,10,GoS.Yellow) end
 if AnnieMenu.Drawings.R:Value() then DrawCircle(pos,600,1,10,GoS.Pink) end
 end)
 
+
+OnLoad (function()
+
+  if not igniteFound then
+      if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
+          igniteFound = true
+          summonerSpells.ignite = SUMMONER_1
+          FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+      elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
+          igniteFound = true
+          summonerSpells.ignite = SUMMONER_2
+          FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+      end
+
+end
+
+end)
+
+
+
+function DrawDMG(target)
+
+
+  local wDMG = 0
+  local eDMG = 0
+  local rDMG = 0
+
+  if Ready(_Q) then
+    wDMG = CalcDamage(myHero, target, 0, (35*GetCastLevel(myHero,_W)+45+(0.80*(GetBonusAP(myHero)))))
+  end
+
+
+  if Ready(_W) then
+    eDMG = CalcDamage(myHero, target, 0, (45*GetCastLevel(myHero,_E)+25+(0.85*(GetBonusAP(myHero)))))
+  end
+
+  if Ready(_R) then
+    rDMG = CalcDamage(myHero, target, 0, (125*GetCastLevel(myHero,_R)+50+(0.80*(GetBonusAP(myHero)))))
+  end
+  local DPS = wDMG + eDMG + rDMG
+  if DPS > GetCurrentHP(target) then
+
+    DrawText(target.charName.." is killable ", 11, 350, 350, GoS.Cyan)
+
+  DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
+
+
+    end
+end
+
+
 OnTick(function(myHero)
+
     local target = GetCurrentTarget()
+
+    local manaQ = myHero:GetSpellData(_Q).mana         -- Needed mana to cast ability
+    local manaW = myHero:GetSpellData(_W).mana         -- Needed mana to cast ability    
+    local manaE = myHero:GetSpellData(_E).mana         -- Needed mana to cast ability  
+    local manaR = myHero:GetSpellData(_R).mana         -- Needed mana to cast ability
 	
 	
     if  GetCurrentMana(myHero) > manaQ + manaW + manaR and IOW:Mode() == "Combo" then
@@ -67,10 +124,10 @@ OnTick(function(myHero)
     	end
 
     	if AnnieMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 595) then -- used a lower range so the possibility to hit R increases
-    		local targetPos = GetOrigin(target)
     			CastSkillShot(_R , targetPos)
         end
 	end	
+
 
 for _, enemy in pairs(GetEnemyHeroes()) do
 	if AnnieMenu.Combo.Q:Value() and AnnieMenu.Combo.KSQ:Value() and Ready(_Q) and ValidTarget(enemy, 625) then
@@ -80,3 +137,26 @@ for _, enemy in pairs(GetEnemyHeroes()) do
 	end
 	end
 end)
+
+
+
+ -- This has been all friends.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              -- Made By Zeyx
+
+              -- With love
+
+              -- For GoS
