@@ -68,7 +68,7 @@ AnnieMenu.Combo:Boolean("W", "Use W", true)
 AnnieMenu.Combo:Boolean("R", "Use R", true)
 AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
 AnnieMenu.Combo:Boolean("Ignite", "Use Ignite", true)
-AnnieMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+AnnieMenu.combo:Boolean("ignite", "Auto Ignite", true)
 
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
@@ -97,11 +97,11 @@ OnLoad (function()
       if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_1
-          AnnieMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+          AnnieMenu.combo:Boolean("ignite", "Auto Ignite", true)
       elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_2
-          AnnieMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+          AnnieMenu.combo:Boolean("ignite", "Auto Ignite", true)
       end
 
 end
