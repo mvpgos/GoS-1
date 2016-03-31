@@ -1,4 +1,4 @@
-local ver = "2.03"
+local ver = "2.031"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -134,7 +134,7 @@ function DrawDMG(target)
 
     DrawText(target.charName.." is killable ", 11, 350, 350, GoS.Cyan)
 
-  DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
+  -- under work DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
 
 
     end
