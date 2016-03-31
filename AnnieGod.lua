@@ -17,8 +17,46 @@ if GetObjectName(GetMyHero()) ~= "Annie" then
 	return 
 end
 
+
+-- Welcome to AnnieGod Ver 1.0
+
+--[[                                                                       .uuu
+    z@#"%c                      .uuzm**"""""*%mu..             z*"` .e@#N      
+   @!!!R.  #c              .z*"                    ^*c       z    dT!!!!!>     
+  '!!!!!!N   "i         u*"                            #s  :"   @?!!!!!!!R     
+  t!!!!!!!#u   "i    .@                                  ^$   :R!!!!!!!!!X     
+  '!!!!!!!!!#c   "i:#                                      ?> R!!!!!!!!!!X     
+  '!!!!!!!!!!!N   @                                         4W!!!!!!!!!!!>     
+  '!!!!!!!!!!!!Ru"                                           ?!!!!!!!!!!X      
+  'X!!!!!!!!!!!9~                                      .  .  'X!!!!!!!!!6      
+   R!!!!!!!!!!tF                                     z$#`   h &!!UR!!!!!F      
+   ?!!!!!$X!!!$                                    .@       X $WTR!!!!!X       
+    M!!!!!i#U!E  .                                @F        ! FdR!!!!!!f       
+    'X!!!!!#c'?u@#"*$N.                         :$          F'9!!!!!!!@        
+     9!!!!!!!?NM      ^*c                      dF          ' @!!!!!!!X>        
+      R!!!!!!!!&         "e                   d            K<!!!!!!!XF         
+      'X!!!!!!!M>          ^N                f            < E!!!!!!X"          
+        t!!!!!!!#            ^N            :"      .e$"^  Fn!!!!!XP            
+         #X!!!!!!ML             *c       z"    .e$$$$$   M'!!!!W*              
+           "*UX!!X@t  ^%u.         ""**#).zd$$#$$$$$$$  <\*@**"                
+                    'N    4$$$$$@$$$)$$#$$k4$$$$$$$$$E :$                      
+                       ?>  "$$$$$$":$$$W$$$ "$$$$$$$$   %                      
+                      :"           ? ^#*"  S  "$$$$$     ?                     
+                      F            L      d$L            X                     
+                      &           t$i    @$$$           f                      
+                       *          $$$$$$$$$$\&        @                        
+                        '*.      W'$$$$$$$$FM h    u#                          
+                           ^*muz* % $$$$$$":    `"                             
+                                   # ^**" d                                    
+                                     "***" --]]
+
+
+
+
+
+
+
 require('Inspired')
-LoadIOW()
 
 
 local AnnieMenu = MenuConfig("Annie", "Annie")
@@ -29,6 +67,7 @@ AnnieMenu.Combo:Boolean("Q", "Use Q", true)
 AnnieMenu.Combo:Boolean("W", "Use W", true)
 AnnieMenu.Combo:Boolean("R", "Use R", true)
 AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
+AnnieMenu.Combo:Boolean("Ignite", "Use Ignite", true)
 
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
@@ -41,7 +80,7 @@ local manaW = GetCastMana(myHero, _W, GetCastLevel(myHero,_W))
 local manaR = GetCastMana(myHero, _R, GetCastLevel(myHero,_R))
 
 
-
+local igniteFound = false
 
 OnDraw(function(myHero)
 local pos = GetOrigin(myHero)
@@ -57,11 +96,11 @@ OnLoad (function()
       if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_1
-          FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+          AnnieMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
       elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_2
-          FiddlesticksMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
+          AnnieMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
       end
 
 end
@@ -103,6 +142,9 @@ end
 
 OnTick(function(myHero)
 
+    IgniteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("ignite") and SUMMONER_1 or (GetCastName(myHero, SUMMONER_2):lower():find("ignite")
+ and SUMMONER_2 or nil))
+
     local target = GetCurrentTarget()
 
     local manaQ = myHero:GetSpellData(_Q).mana         -- Needed mana to cast ability
@@ -112,7 +154,11 @@ OnTick(function(myHero)
 	
 	
     if  GetCurrentMana(myHero) > manaQ + manaW + manaR and IOW:Mode() == "Combo" then
-	
+
+        if AnnieMenu.Combo.Ignite:Value() and IgniteSlot ~= nil and Ready(IgniteSlot) and ValidTarget(target, 600) then
+  
+        CastTargetSpell(target , SmiteSlot)
+	    end
 	
     	if AnnieMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
     		CastTargetSpell(target , _Q)
