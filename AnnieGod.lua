@@ -97,11 +97,11 @@ OnLoad (function()
       if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_1
-          AnnieMenu.combo:Boolean("ignite", "Auto Ignite", true)
+          AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true)
       elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_2
-          AnnieMenu.combo:Boolean("ignite", "Auto Ignite", true)
+          AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true)
       end
 
 end
