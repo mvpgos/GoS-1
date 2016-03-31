@@ -182,7 +182,7 @@ SmiteSlot = (GetCastName(myHero, SUMMONER_1):lower():find("smite") and SUMMONER_
       end
     
   if MalphiteMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 1000) then 
-    if EnemiesAround(GetOrigin(myHero), 1000) >= GalioMenu.Combo.rSS:Value() then
+    if EnemiesAround(GetOrigin(myHero), 1000) >= MalphiteMenu.Combo.rSS:Value() then
           local targetPos = GetOrigin(target)
         
           CastSkillShot(_R , targetPos)
