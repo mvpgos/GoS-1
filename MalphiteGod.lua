@@ -126,7 +126,7 @@ function DrawDMG(target)
 
   if DPS > GetCurrentHP(target) then
   DrawText(target.charName.." is killable ", 11, 350, 350, GoS.Cyan)
-  DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
+  -- under work DrawDmgOverHpBar(target,GetCurrentHP(target),0,DPS,0xffffffff)                   -- ver daño combo 
     end
 end
 
