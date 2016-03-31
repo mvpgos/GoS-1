@@ -1,4 +1,4 @@
-local ver = "2.01"
+local ver = "2.02"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -68,6 +68,7 @@ AnnieMenu.Combo:Boolean("W", "Use W", true)
 AnnieMenu.Combo:Boolean("R", "Use R", true)
 AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
 AnnieMenu.Combo:Boolean("Ignite", "Use Ignite", true)
+AnnieMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
 
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
