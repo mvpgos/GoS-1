@@ -2,6 +2,7 @@ if GetObjectName(GetMyHero()) ~= "Malphite" then
   return 
 end
 
+local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}}
 local ver = "1.0"
 
 function AutoUpdate(data)
