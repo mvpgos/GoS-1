@@ -68,7 +68,7 @@ AnnieMenu.Combo:Boolean("W", "Use W", true)
 AnnieMenu.Combo:Boolean("R", "Use R", true)
 AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
 AnnieMenu.Combo:Boolean("Ignite", "Use Ignite", true)
-AnnieMenu.combo:Boolean("ignite", "Auto Ignite", true)
+AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true)
 
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
