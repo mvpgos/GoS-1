@@ -1,13 +1,13 @@
 
-local ver = "2.1"
+local ver = "2.11"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
-        PrintChat("New version found! " .. data)
+        PrintChat("New AnnieGod Script Version Found " .. data)
         PrintChat("Downloading update, please wait...")
         DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.lua", SCRIPT_PATH .. "AnnieGod.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
     else
-        PrintChat("No updates found!")
+        PrintChat("No updates found! Feel free to destroy with AnnieGod")
     end
 end
 
