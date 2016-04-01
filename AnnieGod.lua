@@ -1,5 +1,5 @@
 
-local ver = "2.033"
+local ver = "2.1"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -14,7 +14,7 @@ end
 GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.version", AutoUpdate)
 ----------------
 
-if GetObjectName(GetMyHero()) ~= "Annie" then return end
+
 
 local AnnieP = 0
 local FlashSlot = GetCastName(myHero, SUMMONER_1):lower():find("flash") and SUMMONER_1 or GetCastName(myHero, SUMMONER_2):lower():find("flash") and SUMMONER_2 or nil
@@ -22,9 +22,19 @@ local IgniteSlot = GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") a
 local AnnieMenu = MenuConfig("Annie", "Annie")
 
 AnnieMenu:Menu("Drawings", "Drawings")
+AnnieMenu:SubMenu("SM", "Use Stun Manager")
+AnnieMenu.SM:Boolean("EN", "Enable Stun Manager", true)
+AnnieMenu.SM:Boolean("Q", "Use Q", true)
+AnnieMenu.SM:Boolean("W", "Use W", true)
+AnnieMenu.SM:Boolean("E", " Use E", true)
+AnnieMenu.SM:Boolean("R", "Use R", true)
+if IgniteSlot ~= nil then AnnieMenu.SM:Boolean("ignite", "Auto Ignite", true) end
+if FlashSlot ~= nil then AnnieMenu.SM:Boolean("flash", "Auto Flash", true) end
+
 AnnieMenu:SubMenu("Combo", "Combo")
 AnnieMenu.Combo:Boolean("Q", "Use Q", true)
 AnnieMenu.Combo:Boolean("W", "Use W", true)
+AnnieMenu.Combo:Boolean("E", " Use E", true)
 AnnieMenu.Combo:Boolean("R", "Use R", true)
 AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
 if IgniteSlot ~= nil then AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true) end
@@ -33,7 +43,6 @@ if FlashSlot ~= nil then AnnieMenu.Combo:Boolean("flash", "Auto Flash", true) en
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
  AnnieMenu.Drawings:Boolean("W", "Draw W Range", true)
- AnnieMenu.Drawings:Boolean("E", "Draw E Range", true)
  AnnieMenu.Drawings:Boolean("R", "Draw R Range", true)
 
 OnDraw(function(myHero)
@@ -54,11 +63,11 @@ function DrawDMG()
     for i, enemy in pairs(GetEnemyHeroes()) do
      if ValidTarget(enemy) then
       if Ready(_Q) then
-        qDMG = myHero:CalcMagicDamage(enemy, 35*GetCastLevel(myHero,_W) + 45 + 0.8*myHero.ap)
+        qDMG = myHero:CalcMagicDamage(enemy, 35*GetCastLevel(myHero,_Q) + 45 + 0.8*myHero.ap)
       end
 
       if Ready(_W) then
-        wDMG = myHero:CalcMagicDamage(enemy, 45*GetCastLevel(myHero,_E) + 25 + 0.85*myHero.ap)
+        wDMG = myHero:CalcMagicDamage(enemy, 45*GetCastLevel(myHero,_W) + 25 + 0.85*myHero.ap)
       end
 
       if Ready(_R) then
@@ -90,6 +99,7 @@ OnRemoveBuff(function(o, buff)
       if buff.Name:lower() == "pyromania" then
        annieP = 0
     end
+    end
 end)
 
   
@@ -98,15 +108,62 @@ OnTick(function(myHero)
     local target = GetCurrentTarget()
 
     if IOW:Mode() == "Combo" then
-      
--- below |||||| the stun manager
 
-     
+-- below |||||| the stun manager
+    if AnnieMenu.SM.EN:Value() then
+      
+
+        if annieP == 2 then
+          if AnnieMenu.SM.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+          CastTargetSpell(target, _Q)
+          end
+          if AnnieMenu.SM.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+           CastSkillShot(_W , target.pos)
+          end
+          if AnnieMenu.SM.E:Value() and Ready(_E) then
+            CastSpell(_E)
+          end
+        end
+
+        if annieP == 3 then 
+          if AnnieMenu.SM.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+          CastTargetSpell(target, _Q)
+          end
+          if AnnieMenu.SM.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+           CastSkillShot(_W , target.pos)
+          end
+          if AnnieMenu.SM.E:Value() and Ready(_E) then
+            CastSpell(_E)
+          end
+        end
+
+        if annieP == 4 then
+          if AnnieMenu.SM.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+          CastTargetSpell(target, _Q)
+          end
+          if AnnieMenu.SM.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+           CastSkillShot(_W , target.pos)
+          end
+          if AnnieMenu.SM.E:Value() and Ready(_E) then
+            CastSpell(_E)
+          end
+        end
+
+        if annieP == 5 then
+          if AnnieMenu.SM.flash:Value() and AnnieMenu.SM.R:Value() and Ready (_R) and ValidTarget(target, 1000) then -- 1000 -> R range + flash range
+            CastSkillShot(FlashSlot, target.pos)
+            CastSkillShot(_R , target.pos)
+          end
+        end
+
+      end
+
+
 -- above ^^^^^^^^^^ the stun manager 
 
 
       if IgniteSlot ~= nil and Ready(IgniteSlot) and ValidTarget(target, 600) then
-          if AnnieMenu.Combo.Ignite:Value() then CastTargetSpell(target, IgniteSlot) 
+          if AnnieMenu.Combo.ignite:Value() then CastTargetSpell(target, IgniteSlot) 
           end
       end
   
