@@ -1,1 +1,188 @@
-LoadGOSScript(Base64Decode("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"))
+
+local ver = "2.13"
+
+function AutoUpdate(data)
+    if tonumber(data) > tonumber(ver) then
+        PrintChat("New AnnieGod Script Version Found " .. data)
+        PrintChat("Downloading update, please wait...")
+        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.lua", SCRIPT_PATH .. "AnnieGod.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
+    else
+        PrintChat("No updates found! Feel free to destroy with AnnieGod")
+    end
+end
+
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/AnnieGod.version", AutoUpdate)
+----------------
+
+
+
+local AnnieP = 0
+local FlashSlot = GetCastName(myHero, SUMMONER_1):lower():find("flash") and SUMMONER_1 or GetCastName(myHero, SUMMONER_2):lower():find("flash") and SUMMONER_2 or nil
+local IgniteSlot = GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") and SUMMONER_1 or GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") and SUMMONER_2 or nil
+local AnnieMenu = MenuConfig("Annie", "Annie")
+
+AnnieMenu:Menu("Drawings", "Drawings")
+AnnieMenu:SubMenu("SM", "Use Stun Manager")
+AnnieMenu.SM:Boolean("EN", "Enable Stun Manager", true)
+AnnieMenu.SM:Boolean("Q", "Use Q", true)
+AnnieMenu.SM:Boolean("W", "Use W", true)
+AnnieMenu.SM:Boolean("E", " Use E", true)
+AnnieMenu.SM:Boolean("R", "Use R", true)
+if IgniteSlot ~= nil then AnnieMenu.SM:Boolean("ignite", "Auto Ignite", true) end
+if FlashSlot ~= nil then AnnieMenu.SM:Boolean("flash", "Auto Flash", true) end
+
+AnnieMenu:SubMenu("Combo", "Combo")
+AnnieMenu.Combo:Boolean("Q", "Use Q", true)
+AnnieMenu.Combo:Boolean("W", "Use W", true)
+AnnieMenu.Combo:Boolean("E", " Use E", true)
+AnnieMenu.Combo:Boolean("R", "Use R", true)
+AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
+if IgniteSlot ~= nil then AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true) end
+if FlashSlot ~= nil then AnnieMenu.Combo:Boolean("flash", "Auto Flash", true) end
+
+
+ AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
+ AnnieMenu.Drawings:Boolean("W", "Draw W Range", true)
+ AnnieMenu.Drawings:Boolean("R", "Draw R Range", true)
+
+OnDraw(function(myHero)
+   local pos = myHero.pos
+    if AnnieMenu.Drawings.Q:Value() then DrawCircle(pos, 625, 1, 10, GoS.Red) end
+    if AnnieMenu.Drawings.W:Value() then DrawCircle(pos, 625, 1, 10, GoS.Yellow) end
+    if AnnieMenu.Drawings.R:Value() then DrawCircle(pos, 600, 1, 10, GoS.Pink) end
+     if IOW:Mode() == "Combo" then DrawDMG() end
+     DrawText(annieP, 20, myHero.pos.x, myHero.pos.y, GoS.White)
+end)
+
+function DrawDMG()
+  local FullDmg = 0
+  local qDMG = 0
+  local wDMG = 0
+  local rDMG = 0
+
+    for i, enemy in pairs(GetEnemyHeroes()) do
+     if ValidTarget(enemy) then
+      if Ready(_Q) then
+        qDMG = myHero:CalcMagicDamage(enemy, 35*GetCastLevel(myHero,_Q) + 45 + 0.8*myHero.ap)
+      end
+
+      if Ready(_W) then
+        wDMG = myHero:CalcMagicDamage(enemy, 45*GetCastLevel(myHero,_W) + 25 + 0.85*myHero.ap)
+      end
+
+      if Ready(_R) then
+        rDMG = myHero:CalcMagicDamage(enemy, 125*GetCastLevel(myHero,_R) + 50 + 0.80*myHero.ap)
+      end
+
+       FullDmg = qDMG + wDMG + rDMG
+
+      if FullDmg > enemy.health + enemy.shieldAD + enemy.shieldAP then
+        DrawText3D("Full Combo Killable", enemy.pos.x, enemy.pos.y, enemy.pos.z, 15, GoS.Red, true)
+      end
+
+       DrawDmgOverHpBar(enemy, enemy.health, 0, FullDmg, GoS.White)
+     end
+    end
+end
+
+
+OnUpdateBuff (function(o, buff)
+  if o == myHero and o.dead == false then
+        if buff.Name:lower() == "pyromania" then
+         annieP = buff.Count
+        end
+  end
+end)
+
+OnRemoveBuff(function(o, buff)
+    if o == myHero and o.dead == false then
+      if buff.Name:lower() == "pyromania" then
+       annieP = 0
+    end
+    end
+end)
+
+  
+
+OnTick(function(myHero)
+    local target = GetCurrentTarget()
+
+    if IOW:Mode() == "Combo" then
+
+-- below |||||| the stun manager
+    if AnnieMenu.SM.EN:Value() then
+      
+
+        if annieP == 2 then
+          if AnnieMenu.SM.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+          CastTargetSpell(target, _Q)
+          end
+          if AnnieMenu.SM.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+           CastSkillShot(_W , target.pos)
+          end
+          if AnnieMenu.SM.E:Value() and Ready(_E) then
+            CastSpell(_E)
+          end
+        end
+
+        if annieP == 3 then 
+          if AnnieMenu.SM.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+          CastTargetSpell(target, _Q)
+          end
+          if AnnieMenu.SM.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+           CastSkillShot(_W , target.pos)
+          end
+          if AnnieMenu.SM.E:Value() and Ready(_E) then
+            CastSpell(_E)
+          end
+        end
+
+        if annieP == 4 then
+          if AnnieMenu.SM.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+          CastTargetSpell(target, _Q)
+          end
+          if AnnieMenu.SM.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+           CastSkillShot(_W , target.pos)
+          end
+          if AnnieMenu.SM.E:Value() and Ready(_E) then
+            CastSpell(_E)
+          end
+        end
+
+        if annieP == 5 then
+          if AnnieMenu.SM.flash:Value() and AnnieMenu.SM.R:Value() and Ready (_R) and ValidTarget(target, 1000) then -- 1000 -> R range + flash range
+            CastSkillShot(FlashSlot, target.pos)
+            CastSkillShot(_R , target.pos)
+          end
+        end
+
+      end
+
+
+-- above ^^^^^^^^^^ the stun manager 
+
+
+      if IgniteSlot ~= nil and Ready(IgniteSlot) and ValidTarget(target, 600) then
+          if AnnieMenu.Combo.ignite:Value() then CastTargetSpell(target, IgniteSlot) 
+          end
+      end
+  
+      if AnnieMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 625) then  
+        CastTargetSpell(target, _Q)
+      end
+
+      if AnnieMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 610) then  -- used a lower range so the possibility to hit W increases
+        CastSkillShot(_W , target.pos)
+      end
+
+      if AnnieMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 595) then -- used a lower range so the possibility to hit R increases
+        CastSkillShot(_R , target.pos)
+        end
+  end
+
+  for _, enemy in pairs(GetEnemyHeroes()) do
+      if AnnieMenu.Combo.Q:Value() and AnnieMenu.Combo.KSQ:Value() and Ready(_Q) and ValidTarget(enemy, 625) and enemy.health + enemy.shieldAD + enemy.shieldAP < myHero:CalcMagicDamage(enemy, 35*GetCastLevel(myHero,_W) + 45 + 0.8*myHero.ap) then
+      CastTargetSpell(enemy, _Q)
+      end
+  end
+end)
