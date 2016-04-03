@@ -1,5 +1,4 @@
-
-local ver = "2.13"
+local ver = "2.14"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -40,6 +39,8 @@ AnnieMenu.Combo:Boolean("KSQ", "Killsteal with Q", true)
 if IgniteSlot ~= nil then AnnieMenu.Combo:Boolean("ignite", "Auto Ignite", true) end
 if FlashSlot ~= nil then AnnieMenu.Combo:Boolean("flash", "Auto Flash", true) end
 
+AnnieMenu:SubMenu("LH", "LastHit")
+AnnieMenu.LH:Boolean("xcpNNme", "Enable Last Hit", true)
 
  AnnieMenu.Drawings:Boolean("Q", "Draw Q Range", true)
  AnnieMenu.Drawings:Boolean("W", "Draw W Range", true)
@@ -51,7 +52,7 @@ OnDraw(function(myHero)
     if AnnieMenu.Drawings.W:Value() then DrawCircle(pos, 625, 1, 10, GoS.Yellow) end
     if AnnieMenu.Drawings.R:Value() then DrawCircle(pos, 600, 1, 10, GoS.Pink) end
      if IOW:Mode() == "Combo" then DrawDMG() end
-     DrawText(annieP, 20, myHero.pos.x, myHero.pos.y, GoS.White)
+     DrawText(annieP, 20, 100, 100, GoS.White)
 end)
 
 function DrawDMG()
@@ -185,4 +186,19 @@ OnTick(function(myHero)
       CastTargetSpell(enemy, _Q)
       end
   end
+
+local QRange = 625
+
+  if IOW:Mode() == "LastHit" then
+    if AnnieMenu.LH.xcpNNme:Value() then
+      for _, minion in pairs(minionManager.objects) do
+        if minion.team == MINION_ENEMY and ValidTarget(minion, QRange) then
+          if minion.health < myHero:CalcMagicDamage(minion, 35*GetCastLevel(myHero,_Q) + 45 + 0.8*myHero.ap) then
+            myHero:CastSpell(_Q, minion.pos)
+          end
+        end
+      end
+    end
+  end
+
 end)
