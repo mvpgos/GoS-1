@@ -52,7 +52,7 @@ function GAnnie:LoadValues()
     self.R = { Range = self.data(_R).range, Speed = math.huge, Delay = 0.25, Width = 250, Damage = function(unit) return myHero:CalcMagicDamage(unit, 50 + 125*self.data(_R).level + 0.8*myHero.ap) end }
     QT = TargetSelector(self.Q.maxRange, 8, DAMAGE_MAGIC)
     WT = TargetSelector(self.W.Range, 8, DAMAGE_MAGIC)
-    self.W.Prediction = Spells(_W, self.W.Delay, self.W.Speed, self.W.Width, self.W.Range, false, 0, true, "cone", "Annie W", 0.25, 50)
+    self.W.Prediction = Spells(_W, self.W.Delay, self.W.Speed, self.W.Width, self.W.Range, false, 0, true, "cone", "Annie W", 0.25, {AnGle = 50})
     self.R.Prediction = Spells(_R, self.R.Delay, self.R.Speed, self.R.Width, self.R.Range, false, 0, true, "circular", "Annie R", 0.4)
     self.passive = 0
     self.stun = false
@@ -60,7 +60,7 @@ end
 
 function GAnnie:CreateMenu()
   self.cfg = MenuConfig("GAnnie", "God Annie Rework")
-    self.cfg:Info("info", "Script Version: 3")
+    self.cfg:Info("info", "Script Version: 0.01")
 
     --[[ Combo Menu ]]--
     self.cfg:Menu("cb", "Combo")
@@ -203,7 +203,7 @@ function GAnnie:Tick(myHero)
 
     if Mix:Mode() == "LaneClear" then
       if self.cfg.lc.Enable:Value() <= GetPercentMP(myHero) then self:LaneClear() end
-      self:JungleClear()
+	  self:JungleClear()
     end
 
     if Mix:Mode() == "LastHit" then
@@ -214,7 +214,7 @@ function GAnnie:Tick(myHero)
 end
 
 function GAnnie:KillSteal()
-    for i, enemy in pairs(GetEnemyHeroes()) do  
+    for i, enemy in pairs(GetEnemyHeroes()) do	
      if self.Ignite and IsReady(self.Ignite) and 20*GetLevel(myHero)+50 > (enemy.health + enemy.shieldAD) + enemy.hpRegen*2.5 and ValidTarget(enemy, 600) then
        if self.cfg.ks.ignite:Value() then CastTargetSpell(enemy, self.Ignite) end
      end
@@ -234,7 +234,7 @@ function GAnnie:LastHit()
       if minion.team == MINION_ENEMY and ValidTarget(minion, self.Q.Range) and minion.name:lower():find("minion_") then
         if Mix:HealthPredict(minion, 1000*(self.Q.Delay + GetDistance(minion)/self.Q.Speed), "OW") > 0 and self.Q.Damage(minion) > Mix:HealthPredict(minion, 1000*(self.Q.Delay + GetDistance(minion)/self.Q.Speed), "OW") then
           CastTargetSpell(minion, _Q)
-        end
+		end
       end
     end
 end
@@ -313,10 +313,10 @@ function GAnnie:Interrupt(unit, spell)
       if CHANELLING_SPELLS[spell.name] then
         if ValidTarget(unit, self.Q.Range) and unit.charName == CHANELLING_SPELLS[spell.name].Name and self.cfg.misc.Interrupt[unit.charName.."Inter"]:Value() then 
           if IsReady(_Q) then CastTargetSpell(unit, _Q)
-          elseif IsReady(_W) then
-            self.W.Prediction:GetHitChance(self.cfg.misc.hc.W:Value()/100)
-            self.W.Prediction:Cast1(unit)
-          end
+		  elseif IsReady(_W) then
+		    self.W.Prediction:GetHitChance(self.cfg.misc.hc.W:Value()/100)
+		    self.W.Prediction:Cast1(unit)
+		  end
         end
       end
     end
