@@ -60,7 +60,7 @@ end
 
 function GAnnie:CreateMenu()
   self.cfg = MenuConfig("GAnnie", "God Annie Rework")
-    self.cfg:Info("info", "Script Version: 0.01")
+    self.cfg:Info("info", "Script Version: 3")
 
     --[[ Combo Menu ]]--
     self.cfg:Menu("cb", "Combo")
