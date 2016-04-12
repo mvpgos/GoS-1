@@ -1,4 +1,4 @@
-local ver = "0.02"
+local ver = "0.03"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -57,8 +57,6 @@ end
 
   --LIBS NEEDED                
      
-
-require("Inspired")
 require("OpenPredict")
 
 
@@ -66,7 +64,7 @@ require("OpenPredict")
 
 
 
- local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}, smite{}}
+local summonerSpells = {ignite = {}, flash = {}, heal = {}, barrier = {}, smite = {}}
 
 local GalioMenu = MenuConfig("Galio", "Galio")
 
@@ -80,16 +78,21 @@ GalioMenu.Combo:Boolean("E", "Use E", true)
 GalioMenu.Combo:Boolean("R", "Use R", true)
 
 GalioMenu:SubMenu("rConfig", " R Configuration")
-GalioMenu.Combo:Slider("rSS","Enemy count to cast R: ", 1, 1, 5, 1)
+GalioMenu.rConfig:Slider("rSS","Enemy count to cast R: ", 1, 1, 5, 1)
 
 GalioMenu.Drawings:Boolean("Q", "Draw Q Range", true)
 GalioMenu.Drawings:Boolean("E", "Draw E Range", true)
 GalioMenu.Drawings:Boolean("W", " Draw W Range", true)
 GalioMenu.Drawings:Boolean("R", "Draw R Range", true)
 
-OnLoad (function()
+GalioMenu:Menu("Version", "Ver + Info")
+  GalioMenu.Version:Info("Cnt", "Made By Zeyx")
+  GalioMenu.Version:Empty("Te", 0)
+  GalioMenu.Version:Info("Ver", "Current Version: 0.03")
 
-  if not igniteFound then
+-- OnLoad (function()
+
+ --[[ if not igniteFound then
       if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
           igniteFound = true
           summonerSpells.ignite = SUMMONER_1
@@ -100,7 +103,7 @@ OnLoad (function()
           GalioMenu.ksteal:Boolean("ignite", "Auto Ignite", true)
       end
   end
-end) 
+end) --]]
 
 
 ------------------------
@@ -208,54 +211,57 @@ local target = GetCurrentTarget()
   if IOW:Mode() == "Combo" then
 
   	if GalioMenu.Combo.Smite:Value() and SmiteSlot ~= nil and Ready(SmiteSlot) and ValidTarget(target, 500) then
-  CastTargetSpell(target , SmiteSlot)
-  end
+      CastTargetSpell(target , SmiteSlot)
+    end
 
   if manaQ + manaW + manaE + manaR < GetCurrentMana(myHero) then
 
+  local QPred = { delay = 0.25, speed = 1200, width = 235, range = 940 } 
+  local pI = GetPrediction(unit, QPred)
+
   	if GalioMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 940) then 
-  		local QPred = { delay = 0.25, speed = 1200, width = 235, range = 940 } 
-  		local pI = GetPrediction(unit, QPred)
   		if pI and pI.hitChance >= 0.25  then
-    	CastSkillShot(_Q, pI.castPos)
-		end
+    	 CastSkillShot(_Q, pI.castPos)
+		  end
     end
 
+      local EPred = { delay = 0.00, speed = 1300, width = 160, range = 1180 } 
+      local GonnaHitYa = GetPrediction(unit, EPred)
 
     if GalioMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 1180) then
-    	local EPred = { delay = 0.00, speed = 1300, width = 160, range = 1180 } 
-  		local GonnaHitYa = GetPrediction(unit, EPred)
-  		if GonnaHitYa and GonnaHitYa.hitChance >= 0.20  then
-    	CastSkillShot(_E, GonnaHitYa.castPos)
-		end
+  		  if GonnaHitYa and GonnaHitYa.hitChance >= 0.20  then
+    	   CastSkillShot(_E, GonnaHitYa.castPos)
+		    end
     end
 
 
     if GalioMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 600) then
     	if EnemiesAround(GetOrigin(myHero), 596) >= GalioMenu.Combo.rSS:Value() then
-    		CastTargetSpell(target , _R) and DrawText(" Ultimate being used ", 11, 250, 250, GoS.Cyan)
+    		CastTargetSpell(target , _R) 
+        DrawText(" Ultimate being used ", 11, 250, 250, GoS.Cyan)
     	end
     end
 
-    if RChannel == true then
-      IOW.movementEnabled = false
-      IOW.attacksEnabled = false
-      BlockF7OrbWalk(true)
-      BlockF7Dodge(true)
-    elseif RChannel == false or EnemiesAround(myHero.pos, 600) == 0 then
-      IOW.movementEnabled = true
-      IOW.attacksEnabled = true
-      BlockF7OrbWalk(false)
-      BlockF7Dodge(false)
-   end
+      if RChannel == true then
+        IOW.movementEnabled = false
+        IOW.attacksEnabled = false
+        BlockF7OrbWalk(true)
+        BlockF7Dodge(true)
+      elseif RChannel == false or EnemiesAround(myHero.pos, 600) == 0 then
+        IOW.movementEnabled = true
+        IOW.attacksEnabled = true
+        BlockF7OrbWalk(false)
+        BlockF7Dodge(false)
+     end
+    end
+  end
 end)
 
 
 OnProcessSpell(function(unit,spellProc)
 
-	if GetPercentHP(myHero) <= 50 and  unit ~= myHero and  GetTeam(unit) == MINION_ENEMY and not spellProc.name:lower():find("attack") and spellProc.target and spellProc.target == myHero and then
+	if GetPercentHP(myHero) <= 50 and  unit ~= myHero and  GetTeam(unit) == MINION_ENEMY and not spellProc.name:lower():find("attack") and spellProc.target and spellProc.target == myHero then
 		CastSpell(myHero,_W)
 
 	end
 end)
-
