@@ -1,4 +1,4 @@
-local ver = "0.04"
+local ver = "0.05"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -88,7 +88,7 @@ GalioMenu.Drawings:Boolean("R", "Draw R Range", true)
 GalioMenu:Menu("Version", "Ver + Info")
   GalioMenu.Version:Info("Cnt", "Made By Zeyx")
   GalioMenu.Version:Empty("Te", 0)
-  GalioMenu.Version:Info("Ver", "Current Version: 0.04")
+  GalioMenu.Version:Info("Ver", "Current Version: 0.05")
 
 -- OnLoad (function()
 
@@ -171,15 +171,15 @@ function DrawDMG(target)
   local rDMG = 0
 
   if Ready(_Q) then
-    qDMG = CalcDamage(myHero, target, 0, (55*GetCastLevel(myHero,_Q)+25+(0.60*(GetBonusAP(myHero)))))
+    qDMG = CalcDamage(myHero, target, 0, (55*GetCastLevel(myHero, _Q)+25+(0.60*(GetBonusAP(myHero)))))
   end
 
   if Ready(_E) then
-    eDMG = CalcDamage(myHero, target, 0, (45*GetCastLevel(myHero,_E)+15+(0.50*(GetBonusAP(myHero)))))
+    eDMG = CalcDamage(myHero, target, 0, (45*GetCastLevel(myHero, _E)+15+(0.50*(GetBonusAP(myHero)))))
   end
 
   if Ready(_R) then
-    rDMG = CalcDamage(myHero, target, 0, (100*GetCastLevel(myHero,_R)+100+(0.60*(GetBonusAP(myHero)))))
+    rDMG = CalcDamage(myHero, target, 0, (100*GetCastLevel(myHero, _R)+100+(0.60*(GetBonusAP(myHero)))))
   end
 
  local DPS = qDMG + eDMG + rDMG
