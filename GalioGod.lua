@@ -217,7 +217,7 @@ local target = GetCurrentTarget()
   if manaQ + manaW + manaE + manaR < GetCurrentMana(myHero) then
 
   local QPred = { delay = 0.25, speed = 1200, width = 235, range = 940 } 
-  local pI = GetPrediction(unit, QPred)
+  local pI = GetPrediction(myHero, QPred)
 
   	if GalioMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 940) then 
   		if pI and pI.hitChance >= 0.25  then
@@ -226,7 +226,7 @@ local target = GetCurrentTarget()
     end
 
       local EPred = { delay = 0.00, speed = 1300, width = 160, range = 1180 } 
-      local GonnaHitYa = GetPrediction(unit, EPred)
+      local GonnaHitYa = GetPrediction(myHero, EPred)
 
     if GalioMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 1180) then
   		  if GonnaHitYa and GonnaHitYa.hitChance >= 0.20  then
