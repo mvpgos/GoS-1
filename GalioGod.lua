@@ -1,4 +1,4 @@
-local ver = "0.03"
+local ver = "0.04"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -88,7 +88,7 @@ GalioMenu.Drawings:Boolean("R", "Draw R Range", true)
 GalioMenu:Menu("Version", "Ver + Info")
   GalioMenu.Version:Info("Cnt", "Made By Zeyx")
   GalioMenu.Version:Empty("Te", 0)
-  GalioMenu.Version:Info("Ver", "Current Version: 0.03")
+  GalioMenu.Version:Info("Ver", "Current Version: 0.04")
 
 -- OnLoad (function()
 
