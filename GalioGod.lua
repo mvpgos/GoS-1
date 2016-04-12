@@ -171,7 +171,7 @@ function DrawDMG(target)
   local rDMG = 0
 
   if Ready(_Q) then
-    qDMG = CalcDamage(myHero, target, 0, (55*GetCastLevel(myHero,_q)+25+(0.60*(GetBonusAP(myHero)))))
+    qDMG = CalcDamage(myHero, target, 0, (55*GetCastLevel(myHero,_Q)+25+(0.60*(GetBonusAP(myHero)))))
   end
 
   if Ready(_E) then
