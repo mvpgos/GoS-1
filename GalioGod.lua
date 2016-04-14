@@ -1,4 +1,4 @@
-local ver = "0.06"
+local ver = "0.07"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -88,7 +88,7 @@ GalioMenu.Drawings:Boolean("R", "Draw R Range", true)
 GalioMenu:Menu("Version", "Ver + Info")
   GalioMenu.Version:Info("Cnt", "Made By Zeyx")
   GalioMenu.Version:Empty("Te", 0)
-  GalioMenu.Version:Info("Ver", "Current Version: 0.06")
+  GalioMenu.Version:Info("Ver", "Current Version: 0.07")
 
 -- OnLoad (function()
 
@@ -221,7 +221,7 @@ local target = GetCurrentTarget()
 
   	if GalioMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 940) then 
   		if pI and pI.hitChance >= 0.25  then
-    	 CastSkillShot(target, _Q)
+    	 CastSkillShot(_Q, target)
 		  end
     end
 
@@ -230,7 +230,7 @@ local target = GetCurrentTarget()
 
     if GalioMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 1180) then
   		  if GonnaHitYa and GonnaHitYa.hitChance >= 0.20  then
-    	   CastSkillShot(target, _E)
+    	   CastSkillShot(_E, target)
 		    end
     end
 
