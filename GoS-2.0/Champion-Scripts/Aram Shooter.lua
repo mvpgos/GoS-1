@@ -3,10 +3,10 @@ local vers = "0.11"
 	    if tonumber(data) > tonumber(vers) then
 	        PrintChat("New Version Found " .. data)
 	        PrintChat("Downloading update, please wait...")
-	        DownloadFileAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/EducationalScripts/Aram%20Shooter.lua", SCRIPT_PATH .. "Aram Shooter.lua", function() PrintChat(string.format("<font color=\"#74E5D2\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
+	        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/Aram%20Shooter.lua", SCRIPT_PATH .. "Aram Shooter.lua", function() PrintChat(string.format("<font color=\"#74E5D2\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
 	    end
     end
-    GetWebResultAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/EducationalScripts/Aram%20Shooter.version", AutoUpdate)
+    GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/Aram%20Shooter.version", AutoUpdate)
 
 -- Above is the auto update functio .
 
