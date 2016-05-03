@@ -7,10 +7,10 @@ function AutoUpdate(data)
     if tonumber(data) > tonumber(version) then
         PrintChat("New TAOS Version Found " .. data)
         PrintChat("Downloading TAOS update, please wait...")
-        DownloadFileAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/TheArtOfScripting/The%20Art%20Of%20Scripting.lua", SCRIPT_PATH .. "The Art Of Scripting.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
+        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/The%20Art%20Of%20Scripting.lua", SCRIPT_PATH .. "The Art Of Scripting.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
     end
 end
-GetWebResultAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/TheArtOfScripting/taos.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/taos.version", AutoUpdate)
 
 
 class "Ahri"
