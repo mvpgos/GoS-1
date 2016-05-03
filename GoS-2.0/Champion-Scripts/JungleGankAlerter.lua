@@ -1,6 +1,6 @@
 local ver = "0.3"
 local s = "Developed by Zeyx"
-local vr = "Current Version " ..ver.. ""
+local vr = "Current Version " ..ver.. " . 21/04/2016"
 local Champ = MyHeroName 
 printIt = {s,vr} 
 PrintChat(printIt[1])
@@ -9,13 +9,13 @@ function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New Version Found " .. data)
         PrintChat("Downloading update, please wait...")
-        DownloadFileAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/JungleGankAlerter/JGA.lua", SCRIPT_PATH .. "JungleGankAlerter.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
+        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/JungleGankAlerter.lua", SCRIPT_PATH .. "JungleGankAlerter.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
     else
         PrintChat(string.format("<font color=\"#fa87b4\"><b>Script Up to date.</b></font>"))
     end
 end
 
-GetWebResultAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/JungleGankAlerter/JGA.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/JungleGankAlerter.version", AutoUpdate)
 
 
 
@@ -42,7 +42,7 @@ JGA.jungleGA:SubMenu("Text", "JGA with text")
 
 JGA:Menu("Inf", "Information")
 JGA.Inf:Info("I2", "Current Version ..." ..ver.."")
-JGA.Inf:Info("I3", "Made By Required")
+JGA.Inf:Info("I3", "Made By Zeyx")
 JGA.Inf:Info("I4", "Upove if you liked it")
 
 
