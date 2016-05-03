@@ -603,10 +603,10 @@ function AutoUpdate(data)
         PrintChat("New Version Found " .. data)
         PrintChat("Downloading update, please wait...")
         newUpdate = 1
-        DownloadFileAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/Required-Utilities/Required_Utilities.lua", SCRIPT_PATH .. "Required_Utilities.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
+        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/ZeyxUtilities.lua", SCRIPT_PATH .. "Zeyx_Utilities.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
     end
 end
-GetWebResultAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/Required-Utilities/Required_Utilities.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/ZeyxUtilities.version", AutoUpdate)
 
 if newUpdate == 1 then
     OnDraw(function()
@@ -614,7 +614,7 @@ if newUpdate == 1 then
        local w, h1, h2, size = (res.x*0.70), (res.y*.15), (res.y*.9), res.y*.02
           DrawLine(w, h1/1.05, w, h2/1.97, w/1.75, ARGB(120,205,0,0))
           DrawLine(w, h1, w, h2/1.97, w/1.75, ARGB(120,50,0,0))
-          DrawText(tostring("Required Utilities Changelog"), (res.y * .028) - 270, (res.x/2.4) - 30, (res.y*.18-10), ARGB(255, 0 , 255, 255))
+          DrawText(tostring("Zeyx Utilities Changelog"), (res.y * .028) - 270, (res.x/2.4) - 30, (res.y*.18-10), ARGB(255, 0 , 255, 255))
           DrawText(tostring("Ver 1.08:"), res.y*.015, (res.x/2.65), (res.y*.210), ARGB(225, 225, 175, 0))
           DrawText(tostring("               Added Model Changer"), res.y*.015, (res.x/2.65), (res.y*.225), ARGB(255, 255, 255, 255))
           DrawText(tostring("Ver 1.07"), res.y*.015, (res.x/2.65), (res.y*.240), ARGB(225, 225, 175, 0))
