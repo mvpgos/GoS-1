@@ -1,6 +1,6 @@
 local ver = "0.3"
 local s = "Developed by Zeyx"
-local vr = "Current Version " ..ver.. " . 21/04/2016"
+local vr = "Current Version " ..ver.. ""
 local Champ = MyHeroName 
 printIt = {s,vr} 
 PrintChat(printIt[1])
