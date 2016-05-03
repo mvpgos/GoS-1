@@ -1,6 +1,4 @@
 local ver = "0.1"
-
-
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New Version Found " .. data)
@@ -10,9 +8,7 @@ function AutoUpdate(data)
 end
 GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/MinionHpMarker.version", AutoUpdate)
 
-
 local HpMenu = MenuConfig("Minion HP: Version: "..ver.."", "Zeyx's Minion HP Drawing")
-
 HpMenu:SubMenu("sel", "Drawings")
 	HpMenu.sel:Boolean("Enabled", "Enable HP Drawings", true)
 		HpMenu.sel:SubMenu("select", "Select Minions")
