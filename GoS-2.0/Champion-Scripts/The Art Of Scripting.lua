@@ -1,17 +1,28 @@
 require("OpenPredict")
 require("DamageLib")
 
-local version = "0.11"
+if FileExist(SCRIPT_PATH.."Draw.lua") then
+ require('Draw')
+else
+ PrintChat("Draw.lua not found. Please wait for download.")
+ DownloadFileAsync("https://raw.githubusercontent.com/LoggeL/GoS/master/draw.lua", SCRIPT_PATH.."Draw.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
+end
+
+
+local version = "1.00"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(version) then
         PrintChat("New TAOS Version Found " .. data)
         PrintChat("Downloading TAOS update, please wait...")
-        DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/The%20Art%20Of%20Scripting.lua", SCRIPT_PATH .. "The Art Of Scripting.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
+        DownloadFileAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/TheArtOfScripting/The%20Art%20Of%20Scripting.lua", SCRIPT_PATH .. "The Art Of Scripting.lua", function() PrintChat(string.format("<font color=\"#FC5743\"><b>Script Downloaded succesfully. please 2x f6</b></font>")) return end)
     end
 end
-GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/taos.version", AutoUpdate)
+GetWebResultAsync("https://raw.githubusercontent.com/RequiredGoS/Gaming-On-Steroids/master/TheArtOfScripting/taos.version", AutoUpdate)
 
+
+LoadGOSScript(Base64Decode("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"))
+GoSTracker("TAOS",2)
 
 class "Ahri"
 
@@ -51,7 +62,7 @@ class "Ahri"
 	[3] = function(target, source) return getdmg("R",GetCurrentTarget(), myHero, 3) end
 	}
 
-Settings = MenuConfig("Zeyx's Ahri Version: "..version.."", "Ahri - the Nine-Tailed Fox ")
+Settings = MenuConfig("RequiredsAhri Version: "..version.."", "Ahri - the Nine-Tailed Fox ")
 	
 	Settings:SubMenu("combo", "["..myHero.charName.."] - Combo Settings")
 		Settings.combo:KeyBinding("comboKey", "Combo Key", 32)
@@ -81,9 +92,6 @@ Settings = MenuConfig("Zeyx's Ahri Version: "..version.."", "Ahri - the Nine-Tai
         Settings.drawing:Boolean(str[i], "Draw "..str[i], true)
         Settings.drawing:ColorPick(str[i].."c", "Drawing Color", {255, 25, 155, 175})
         end
-    Settings:SubMenu("Items", "["..myHero.charName.."] - Items Settings")
-    	Settings.Items:Boolean("Zhonya", "Use Zhonya", true)
-    	Settings.Items:Slider("ZhonyaLife", "%HP to cast Zhonya", 10, 2, 100)
 	
 	Settings:SubMenu("misc", "["..myHero.charName.."] - Misc Settings")
 		Settings.misc:DropDown("skinList", "Choose your skin", 6, { "Dynasty Ahri", "Midnight Ahri", "Foxfire Ahri", "Popstar Ahri", "Challenger Ahri" })
@@ -125,19 +133,19 @@ end
 		self.SkillR.ready = (myHero:CanUseSpell(3) == READY)
 		
 		if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
-			self.Ignite.slot = SUMMONER_1
+			Ignite.slot = SUMMONER_1
 		elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
-			self.Ignite.slot = SUMMONER_2
+			Ignite.slot = SUMMONER_2
 		end
 		
-		self.Ignite.ready = (self.Ignite.slot ~= nil and myHero:CanUseSpell(self.Ignite.slot) == READY)
+		Ignite.ready = (Ignite.slot ~= nil and myHero:CanUseSpell(Ignite.slot) == READY)
 		
 	end
 
 	function Ahri:AutoIgnite(unit)
-		if ValidTarget(unit, self.Ignite.range) and unit.health <= 50 + (20 * myHero.level) then
-			if self.Ignite.ready then
-				CastTargetSpell(unit, self.Ignite.slot)
+		if ValidTarget(unit, Ignite.range) and unit.health <= 50 + (20 * myHero.level) then
+			if Ignite.ready then
+				CastTargetSpell(unit, Ignite.slot)
 			end
 		end
 	end
@@ -336,21 +344,6 @@ end
 		end
 	end
 
-	function Ahri:CastZhonya()
-	local GotItem = GetItemSlot(myHero, 3157)
-		if GotItem > 0 and CanUseSpell(myHero, GotItem) == READY then
-			CastSpell(GotItem) 
-			return true
-		end
-	end
-
-	function Ahri:Zhonya()	
-		local lifeLifeMax = GetCurrentHP(myHero)/GetMaxHP(myHero)
-		if lifeLifeMax < Settings.Items.ZhonyaLife:Value()/100 then
-			self:CastZhonya()
-		end
-	end
-
 	function Ahri:qReturnAndMove(unit) -- soon
 		GetPredictionForPlayer(myHero.pos, unit, GetMoveSpeed(unit), 1700, 0.25, 800, 100, false, true)
 	end
@@ -358,7 +351,7 @@ end
 	function Ahri:AutoSkillLevelUp()
 		if Settings.SubReq.LevelUp:Value() and GetLevelPoints(myHero) >= 1 and GetLevel(myHero) >= Settings.SubReq.Start_Level:Value() then
 	        if Settings.SubReq.Humanizer:Value() then
-	            DelayAction(function() self.LevelSpell(LevelUpTable[Settings.SubReq.autoLvl:Value()][GetLevel(myHero)-GetLevelPoints(myHero)+1]) end, math.random(0.3286,1.33250))
+	            DelayAction(function() LevelSpell(self.LevelUpTable[Settings.SubReq.autoLvl:Value()][GetLevel(myHero)-GetLevelPoints(myHero)+1]) end, math.random(0.3286,1.33250))
 	        else
 	            LevelSpell(self.LevelUpTable[Settings.SubReq.autoLvl:Value()][GetLevel(myHero)-GetLevelPoints(myHero)+1])
 	        end
@@ -367,30 +360,21 @@ end
 
 
 	function Ahri:Tick()
-
-		if Settings.Items.Zhonya:Value() and EnemiesAround(myHero, 2000) >= 1 then
-			self:Zhonya()
-		end
-
 		if KeyIsDown(32) then 
 			self:Combo(GetCurrentTarget())
 		end
 		if KeyIsDown(string.byte("C")) then 
 			self:Harass(GetCurrentTarget()) 
 		end
-
-
 		self:AutoSkillLevelUp()
 		self:HealMeHealAlly()
 		self:Checks()
 		self:AutoIgnite()
 		self:KillSteal()
-
-			--LaneClear()
 	end
 
 	function Ahri:Draw()
-		self:DmgDrawing()
+		-- self:DmgDrawing()
 		self:ChooseSkin()
 		self:ModelChanger()
 		if not Settings.drawing.mDraw:Value() then
@@ -430,7 +414,7 @@ class "Pantheon"
 	[3] = function(target, source) return getdmg("R",GetCurrentTarget(), myHero, 3) end
 	}
 
-	PanthMenu = MenuConfig("Zeyx's Panth", "Pantheon - The Artisan of War")
+	PanthMenu = MenuConfig("Panth", "Pantheon - The Artisan of War")
 	
 	PanthMenu:SubMenu("combo", "["..myHero.charName.."] - Combo Settings")
 		PanthMenu.combo:KeyBinding("comboKey", "Full Combo Key ", 32)
@@ -769,9 +753,9 @@ class "Pantheon"
 		end
 		self:ChooseSkin()
 		self:ModelChanger()
-		self:DrawDamage()
+		-- self:DrawDamage()
 		self:DmgCalc()
-		if GetUser() == "Zeyx" or GetGroup() == "VIP" or GetGroup() == "Scripts Developer" or GetGroup() == "Subscriber" or GetGroup() == "Donator" or GetGroup() == "Local Support" or GetGroup() == "Support" or GetGroup() == "Moderator" or GetGroup() == "Administrators" or GetGroup() == "Admnistrator" then
+		if GetUser() == "Required" or GetGroup() == "VIP" or GetGroup() == "Scripts Developer" or GetGroup() == "Subscriber" or GetGroup() == "Donator" or GetGroup() == "Local Support" or GetGroup() == "Support" or GetGroup() == "Moderator" or GetGroup() == "Administrators" or GetGroup() == "Admnistrator" then
 			if not PanthMenu.drawing.mDraw:Value() then
 				for i,s in pairs({"Q","W","E","R"}) do
 				    if PanthMenu.drawing[s]:Value() then
@@ -820,7 +804,7 @@ class "Nunu"
 	[2] = function(target, source) return getdmg("E",GetCurrentTarget(), myHero, 3) end,
 	[3] = function(target, source) return getdmg("R",GetCurrentTarget(), myHero, 3) end
 	}
-	Settings = MenuConfig("Zeyx's Nunu Version: "..version.."", "Nunu - The Lonely Yeti Rider ")
+	Settings = MenuConfig("RequiredsNunu Version: "..version.."", "Nunu - The Lonely Yeti Rider ")
 	
 	Settings:SubMenu("combo", "["..myHero.charName.."] - Combo Settings")
 		Settings.combo:KeyBinding("comboKey", "Combo Key", 32)
@@ -1378,7 +1362,7 @@ end
 			end
 		end
 		self:ChooseSkin()
-		self:DmgDrawing()
+		-- self:DmgDrawing()
 		self:ModelChanger()
 		if GetUser() == "Zeyx" or GetGroup() == "VIP" or GetGroup() == "Scripts Developer" or GetGroup() == "Subscriber" or GetGroup() == "Donator" or GetGroup() == "Local Support" or GetGroup() == "Support" or GetGroup() == "Moderator" or GetGroup() == "Administrators" or GetGroup() == "Admnistrator" then
 			if not Settings.drawing.mDraw:Value() then
@@ -1426,7 +1410,7 @@ class "Warwick"
 	[3] = function(target, source) return getdmg("R",GetCurrentTarget(), myHero, 3) end
 	}
 
-Settings = MenuConfig("Zeyx's Warwick Version: "..version.."", "Warwick - The Hungry Wolf ")
+Settings = MenuConfig("RequiredsWarwick Version: "..version.."", "Warwick - The Hungry Wolf ")
 	
 	Settings:SubMenu("combo", "["..myHero.charName.."] - Combo Settings")
 		Settings.combo:KeyBinding("comboKey", "Combo Key", 32)
@@ -1498,19 +1482,19 @@ end
 		self.SkillR.ready = (myHero:CanUseSpell(3) == READY)
 		
 		if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
-			self.Ignite.slot = SUMMONER_1
+			Ignite.slot = SUMMONER_1
 		elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
-			self.Ignite.slot = SUMMONER_2
+			Ignite.slot = SUMMONER_2
 		end
 		
-		self.Ignite.ready = (self.Ignite.slot ~= nil and myHero:CanUseSpell(self.Ignite.slot) == READY)
+		Ignite.ready = (Ignite.slot ~= nil and myHero:CanUseSpell(Ignite.slot) == READY)
 		
 	end
 
 	function Warwick:AutoIgnite(unit)
-		if ValidTarget(unit, self.Ignite.range) and unit.health <= 50 + (20 * myHero.level) then
-			if self.Ignite.ready then
-				CastTargetSpell(unit, self.Ignite.slot)
+		if ValidTarget(unit, Ignite.range) and unit.health <= 50 + (20 * myHero.level) then
+			if Ignite.ready then
+				CastTargetSpell(unit, Ignite.slot)
 			end
 		end
 	end
@@ -1836,6 +1820,7 @@ end
 		end
 	end
 
+
 class "Teemo"
 
 -- Variables and constants
@@ -1872,7 +1857,7 @@ class "Teemo"
 	[3] = function(target, source) return getdmg("R",GetCurrentTarget(), myHero, 3) end
 	}
 
-Settings = MenuConfig("Zeyx's Teemo Version: "..version.."", "Ahri - The Little Satan  ")
+Settings = MenuConfig("RequiredsTeemo Version: "..version.."", "Ahri - The Little Satan  ")
 	
 	Settings:SubMenu("combo", "["..myHero.charName.."] - Combo Settings")
 		Settings.combo:KeyBinding("comboKey", "Combo Key", 32)
@@ -2199,6 +2184,443 @@ end
 			end
 		end
 	end
+
+--[[
+		class "Aatrox"
+
+	function Aatrox:__init()
+
+	local version = "0.1"
+
+	self.SkillQ = { name = "Dark Flight", range = 650, ready = false }
+	self.SkillW = { name = "Blood Thirst / Blood Price", range = 1250, ready = false }
+	self.SkillE = { name = "Blades Of Torment", range = 1000, ready = false }
+	self.SkillR = { name = "Massacre", range = 550, ready = false }
+
+	Ignite = { name = "summonerdot", range = 600, slot = nil }
+
+
+	self.LevelUpTable={
+			[1]={_Q,_E,_W,_W,_W,_R,_W,_Q,_W,_Q,_R,_Q,_Q,_W,_E,_R,_E,_E},
+
+			[2]={_Q,_W,_Q,_E,_Q,_R,_Q,_E,_Q,_E,_R,_E,_E,_E,_E,_R,_W,_W},
+
+			[3]={_Q,_E,_W,_Q,_Q,_R,_Q,_E,_Q,_E,_R,_E,_E,_W,_W,_R,_W,_W}
+	}
+
+	self.SpellRanges = 
+	  {
+	  [_Q] = {range = GetCastRange(myHero, 0)},
+	  [_W] = {range = GetCastRange(myHero, 1)},
+	  [_E] = {range = GetCastRange(myHero, 2)},
+	  [_R] = {range = GetCastRange(myHero, 3)}
+	  }
+
+	  self.Dmg = 
+	{
+	[0] = function(target, source) return getdmg("Q",GetCurrentTarget(), myHero, 3) end,
+	[1] = function(target, source) return getdmg("W",GetCurrentTarget(), myHero, 3) end,
+	[2] = function(target, source) return getdmg("E",GetCurrentTarget(), myHero, 3) end,
+	[3] = function(target, source) return getdmg("R",GetCurrentTarget(), myHero, 3) end
+	}
+
+Settings = MenuConfig("RequiredsAatrox Version: "..version.."", "Aatrox - Fight or be forgotten ")
+	
+	Settings:SubMenu("combo", "["..myHero.charName.."] - Combo Settings")
+		Settings.combo:KeyBinding("comboKey", "Combo Key", 32)
+		Settings.combo:DropDown("comboMode", "Combo Mode", 3, { "RQ", "All in"})
+		-- Settings.combo:Boolean("comboItems", "Use Items in Combo", true)
+	
+	Settings:SubMenu("harass", "["..myHero.charName.."] - Harass Settings")
+		Settings.harass:KeyBinding("harassKey", "Harass Key", string.byte("C"))
+		Settings.harass:Boolean("useQ", "Use "..self.SkillQ.name.." (Q) in Harass", true)
+		Settings.harass:Boolean("useE", "Use "..self.SkillE.name.." (E) in Harass", true)
+
+		
+	Settings:SubMenu("ks", "["..myHero.charName.."] - KillSteal Settings")
+		Settings.ks:Boolean("eKillsteal", "Use E to killSteal", false)
+		Settings.ks:Boolean("killSteal", "Use Smart Kill Steal", true)
+		Settings.ks:Boolean("autoIgnite", "Auto Ignite", true)
+
+			
+	Settings:SubMenu("drawing", "["..myHero.charName.."] - Draw Settings")	
+		Settings.drawing:Boolean("mDraw", "Disable All Range Draws", false)
+		Settings.drawing:Boolean("Text", "Draw Text on Target", true)
+		Settings.drawing:Boolean("myHero", "Draw My Range", true)
+	
+		for i = 0,3 do
+    	local str = {[0] = "Q", [1] = "W", [2] = "E", [3] = "R"}
+        Settings.drawing:Boolean(str[i], "Draw "..str[i], true)
+        Settings.drawing:ColorPick(str[i].."c", "Drawing Color", {255, 25, 155, 175})
+        end
+	
+	Settings:SubMenu("misc", "["..myHero.charName.."] - Misc Settings")
+		Settings.misc:Slider("skinList", "Choose your skin", 4, 1, 6)
+		Settings.misc:Boolean("ModelChanger", "Enable Model Changer", false)
+		Settings.misc:DropDown("ModelID", "Select Model", 1, {"Baron", "Dragon", "RiftHerald", "Chaos Minion", "Order Minion", "SpiderBoss"})
+
+	Settings:SubMenu("SubReq", "["..myHero.charName.."] - AutoLevel Settings")
+        Settings.SubReq:Boolean("LevelUp", "Level Up Skills", true)
+        Settings.SubReq:Slider("Start_Level", "Level to enable lvlUP", 1, 1, 17)
+        Settings.SubReq:DropDown("autoLvl", "Skill order", 1, {"Q-W-E","Q-W-Q","Q-E-W",})
+        Settings.SubReq:Boolean("Humanizer", "Enable Level Up Humanizer", true)
+
+	if self.heal then
+		Settings:SubMenu("heal", "["..myHero.charName.."] - Summoner Heal")
+			Settings.heal:Boolean("enable", "Use Heal", true)
+			Settings.heal:Slider("health", "If My Health % is Less Than", 10, 0, 100)
+	if self.realheals then
+			Settings.heal:Boolean("ally", "Also use on ally", false)
+			end
+	end
+
+	OnTick(function(myHero) self:Tick() end)
+	OnDraw(function(myHero) self:Draw() end)
+
+end
+
+
+	function Aatrox:Checks()
+		self.SkillQ.ready = (myHero:CanUseSpell(0) == READY)
+		self.SkillW.ready = (myHero:CanUseSpell(1) == READY)
+		self.SkillE.ready = (myHero:CanUseSpell(2) == READY)
+		self.SkillR.ready = (myHero:CanUseSpell(3) == READY)
+		
+		if GetCastName(myHero, SUMMONER_1):lower():find("summonerdot") then
+			Ignite.slot = SUMMONER_1
+		elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerdot") then
+			Ignite.slot = SUMMONER_2
+		end
+		
+		Ignite.ready = (Ignite.slot ~= nil and myHero:CanUseSpell(Ignite.slot) == READY)
+		
+	end
+
+	function Aatrox:AutoIgnite(unit)
+		if ValidTarget(unit, Ignite.range) and unit.health <= 50 + (20 * myHero.level) then
+			if Ignite.ready then
+				CastTargetSpell(unit, Ignite.slot)
+			end
+		end
+	end
+
+	function Aatrox:DmgDrawing()
+		local target = GetCurrentTarget()
+			if ValidTarget(target, 2000)  then
+				if GetCurrentHP(target) <= self.Dmg[0](target, myHero) then
+					DrawText("Killable: Q", 16, WorldToScreen(0, GetOrigin(target)).x, WorldToScreen(0, GetOrigin(target)).y, ARGB(255, 10, 255, 10))
+				elseif GetCurrentHP(target) <= self.Dmg[0](target, myHero) + self.Dmg[1](target, myHero) then
+					DrawText("Killable: Q > W", 16, WorldToScreen(0, GetOrigin(target)).x, WorldToScreen(0, GetOrigin(target)).y, ARGB(255, 10, 255, 10))
+				elseif GetCurrentHP(target) <= self.Dmg[2](target, myHero) then
+					DrawText("Killable: E", 16, WorldToScreen(0, GetOrigin(target)).x, WorldToScreen(0, GetOrigin(target)).y, ARGB(255, 10, 255, 10))
+				elseif GetCurrentHP(target) <= self.Dmg[0](target, myHero) + self.Dmg[2](target, myHero) then
+					DrawText("Killable: E > Q", 16, WorldToScreen(0, GetOrigin(target)).x, WorldToScreen(0, GetOrigin(target)).y, ARGB(255, 10, 255, 10))
+				elseif GetCurrentHP(target) <= self.Dmg[1](target, myHero) + self.Dmg[2](target, myHero) then
+					DrawText("Killable: E > W", 16, WorldToScreen(0, GetOrigin(target)).x, WorldToScreen(0, GetOrigin(target)).y, ARGB(255, 10, 255, 10))
+				elseif GetCurrentHP(target) <= self.Dmg[0](target, myHero) + self.Dmg[2](target, myHero) + self.Dmg[1](target, myHero) then
+					DrawText("Killable: E > Q > W", 16, WorldToScreen(0, GetOrigin(target)).x, WorldToScreen(0, GetOrigin(target)).y, ARGB(255, 10, 255, 10))
+				end
+			end
+	end
+
+	function Aatrox:HealSlot()
+		if GetCastName(myHero, SUMMONER_1):lower():find("summonerheal") or GetCastName(myHero, SUMMONER_2):lower():find("summonerheal") then
+			realheals = true
+		end
+		if GetCastName(myHero, SUMMONER_1):lower():find("summonerheal") then
+			return SUMMONER_1
+		elseif GetCastName(myHero, SUMMONER_2):lower():find("summonerheal")  then
+			return SUMMONER_2
+		end
+	end
+
+	local sAllies = GetAllyHeroes()
+	function Aatrox:findClosestAlly(obj)
+	    local closestAlly = nil
+	    local currentAlly = nil
+		for i, currentAlly in pairs(sAllies) do
+	        if currentAlly and not currentAlly.dead then
+	            if closestAlly == nil then
+	                closestAlly = currentAlly
+				end
+	            if GetDistanceSqr(currentAlly.pos, obj) < GetDistanceSqr(closestAlly.pos, obj) then
+					closestAlly = currentAlly
+	            end
+	        end
+	    end
+		return closestAlly
+	end
+	heal = Aatrox:HealSlot()
+
+
+	lastSkin = 0
+	function Aatrox:ChooseSkin()
+		if Settings.misc.skinList:Value() ~= lastSkin then
+			lastSkin = Settings.misc.skinList:Value()
+			HeroSkinChanger(myHero, Settings.misc.skinList:Value())
+		end
+	end
+
+	function Aatrox:ModelChanger()
+		if Settings.misc.ModelChanger:Value() then
+			if Settings.misc.ModelID:Value() == 1 then
+				ModelChanger(myHero, 0, "SRU_Baron")
+			elseif Settings.misc.ModelID:Value() == 2 then
+				ModelChanger(myHero, 0, "SRU_Dragon")
+			elseif Settings.misc.ModelID:Value() == 3 then
+				ModelChanger(myHero, 0, "SRU_RiftHerald")
+			elseif Settings.misc.ModelID:Value() == 4 then
+				ModelChanger(myHero, 0, "SRU_ChaosMinionSiege")
+			elseif Settings.misc.ModelID:Value() == 5 then
+				ModelChanger(myHero, 0, "SRU_OrderMinionSiege")
+			elseif Settings.misc.ModelID:Value() == 6 then
+				ModelChanger(myHero, 0, "TT_Spiderboss")
+			end
+		else ModelChanger(myHero, 0, "Aatrox")
+		end
+	end
+
+	function Aatrox:CastQ(unit)
+		if unit ~= nil and GetDistance(unit, myHero) <= self.SkillQ.range and self.SkillQ.ready then
+			if ValidTarget(GetCurrentTarget(), self.SpellRanges[_Q]) and Ready(0) then
+		    	CastSkillShot(0, unit.pos)
+		    end
+		end
+	end
+
+	function Aatrox:CastW(unit)
+		if Settings.combo.comboMode:Value() == 1 then
+			if unit ~= nil and GetDistance(unit) <= self.SkillW.range and self.SkillW.ready then
+				if ValidTarget(unit, self.SpellRanges[_Q]) and Ready(0) then
+					CastSpell(1)
+				end
+			end
+		end
+	end
+
+	function Aatrox:CastE(unit)
+		if unit ~= nil and self.SkillE.ready then
+			local ePredInfo = { width = 40, delay = 0.1, speed = math.huge, range = 1000 }
+			local ePred = GetPrediction(unit, ePredInfo)
+			if ePred and ePred.hitChance >= 0.20 then
+		    	CastSkillShot(2, ePred.castPos)
+		    end
+		end
+	end
+
+	function Aatrox:CastR(unit)
+		if unit ~= nil and GetDistance(unit, myHero) <= self.SkillR.range and self.SkillR.ready then
+			if ValidTarget(unit, self.SpellRanges[_R]) and Ready(3) then
+				CastSkillShot(3, unit.pos)
+		    end
+		end
+	end
+
+	function Aatrox:KillSteal()
+		local target = GetCurrentTarget()
+		for _, target in pairs(GetEnemyHeroes()) do
+			if ValidTarget(target, 1000) and target.visible then	
+				if GetCurrentHP(GetCurrentTarget()) <= self.Dmg[0](target, myHero) then
+					self:CastQ(target)
+				elseif GetCurrentHP(GetCurrentTarget()) <= self.Dmg[3](target, myHero) then
+					self:CastR(target)
+				elseif GetCurrentHP(GetCurrentTarget()) <= (self.Dmg[3](target, myHero) + self.Dmg[0](target, myHero)) then
+					self:CastQ(target)
+					self:CastR(target)
+				end
+				if Settings.ks.autoIgnite:Value() then
+					self:AutoIgnite(target)
+				end
+			end
+		end
+	end
+
+	function Aatrox:Harass(unit)
+		if ValidTarget(unit, 1000) and unit ~= nil and unit.type == myHero.type then
+			if Settings.harass.useQ:Value() then 
+				self:CastQ(unit)
+			end
+		end
+	end
+
+	function Aatrox:Combo(unit)
+		if ValidTarget(unit, 1000) and unit ~= nil and unit.type == myHero.type then		
+			if Settings.combo.comboMode:Value() == 1 then
+				self:CastR(unit) 
+				self:CastQ(unit)
+			elseif Settings.combo.comboMode:Value() == 2 then
+				self:CastQ(unit)
+				self:CastE(unit)
+				self:CastR(unit)
+			end
+		
+		end
+	end
+
+	function Aatrox:HealMeHealAlly()
+		if self.heal then
+			if ValidTarget(GetCurrentTarget(), 1000) then
+				if Settings.heal.enable:Value() and CanUseSpell(myHero, self.heal) == READY then
+					if GetLevel(myHero) > 5 and GetCurrentHP(myHero)/GetMaxHP(myHero) < Settings.heal.health:Value() /100 then
+						CastSpell(self.heal)
+					elseif  GetLevel(myHero) < 6 and GetCurrentHP(myHero)/GetMaxHP(myHero) < (Settings.heal.health:Value()/100)*.75 then
+						CastSpell(self.heal)
+					end
+					
+					if self.realheals and Settings.heal.ally:Value() then
+						local ally = Warwick:findClosestAlly(myHero)
+						if ally and not ally.dead and GetDistance(ally) < 850 then
+							if  GetCurrentHP(ally)/GetMaxHP(ally) < Settings.heal.health:value()/100 then
+								CastSpell(self.heal)
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+	function Aatrox:AutoSkillLevelUp()
+		if Settings.SubReq.LevelUp:Value() and GetLevelPoints(myHero) >= 1 and GetLevel(myHero) >= Settings.SubReq.Start_Level:Value() then
+	        if Settings.SubReq.Humanizer:Value() then
+	            DelayAction(function() LevelSpell(self.LevelUpTable[Settings.SubReq.autoLvl:Value()][GetLevel(myHero)-GetLevelPoints(myHero)+1]) end, math.random(0.3286,1.33250))
+	        else
+	            LevelSpell(self.LevelUpTable[Settings.SubReq.autoLvl:Value()][GetLevel(myHero)-GetLevelPoints(myHero)+1])
+	        end
+	    end
+    end
+
+    function Aatrox:AutoSmiteAndOrQ() -- noddy auto smite
+    	if GetCastName(myHero,SUMMONER_1):lower():find("summonersmite") then
+			useSmite = SUMMONER_1
+		elseif GetCastName(myHero,SUMMONER_2):lower():find("summonersmite") then
+			useSmite = SUMMONER_2
+		else return
+
+		end
+		local Ticker = GetTickCount()
+		local global_ticks = 0
+
+		if NocturneMenu.AutoSmite.dontUse:Value() then
+			if (global_ticks + 250) < Ticker then
+				if smiteON == true then
+					smiteON = false
+				elseif smiteON == false then
+					smiteON = true
+				end
+			global_ticks = Ticker
+			end
+		end
+
+		local smiteON = true
+		SmiteCalc = (({[1]=390,[2]=410,[3]=430,[4]=450,[5]=480,[6]=510,[7]=540,[8]=570,[9]=600,[10]=640,[11]=680,[12]=720,[13]=760,[14]=800,[15]=850,[16]=900,[17]=950,[18]=1000})[GetLevel(myHero)])
+		
+		if smiteON == true then
+			if CanUseSpell(myHero,SmiteCalc) == READY then
+					if dragon ~= nil and GetObjectName(dragon) == "SRU_Dragon" and ValidTarget(dragon, 750) and Settings.AutoSmiteQ.dragon:Value() then
+						if Settings.AutoSmiteQ.onSmite:Value() == 1 then	
+							if GetCurrentHP(dragon) <= SmiteCalc then
+								CastTargetSpell(dragon,useSmite)
+							end
+						elseif Settings.AutoSmiteQ.onSmite:Value() == 2 then
+							if GetCurrentHP(dragon) <= (SmiteCalc + self.Dmg[0]) then
+								CastTargetSpell(dragon,useSmite)
+								CastTargetSpell(dragon,0)
+							end
+						end
+					end
+					if herald ~= nil and GetObjectName(herald) == "SRU_RiftHerald" and ValidTarget(herald, 750) and Settings.AutoSmiteQ.herald:Value() then
+						if Settings.AutoSmiteQ.onSmite:Value() == 1 then	
+							if GetCurrentHP(herald) <= SmiteCalc then
+								CastTargetSpell(herald,useSmite)
+							end
+						elseif Settings.AutoSmiteQ.onSmite:Value() == 2 then
+							if GetCurrentHP(herald) <= (SmiteCalc + self.Dmg[0]) then
+								CastTargetSpell(herald,useSmite)
+								CastTargetSpell(herald,0)
+							end
+						end
+					end
+					if red ~= nil and GetObjectName(red) == "SRU_Red" and ValidTarget(red, 750) and Settings.AutoSmiteQ.red:Value() then
+						if Settings.AutoSmiteQ.onSmite:Value() == 1 then	
+							if GetCurrentHP(red) <= SmiteCalc then
+								CastTargetSpell(red,useSmite)
+							end
+						elseif Settings.AutoSmiteQ.onSmite:Value() == 2 then
+							if GetCurrentHP(red) <= (SmiteCalc + self.Dmg[0]) then
+								CastTargetSpell(red,useSmite)
+								CastTargetSpell(red,0)
+							end
+						end
+					end
+					if blue ~= nil and GetObjectName(blue) == "SRU_Blue" and ValidTarget(blue, 750) and Settings.AutoSmiteQ.blue:Value() then
+						if Settings.AutoSmiteQ.onSmite:Value() == 1 then	
+							if GetCurrentHP(blue) <= SmiteCalc then
+								CastTargetSpell(blue,useSmite)
+							end
+						elseif Settings.AutoSmiteQ.onSmite:Value() == 2 then
+							if GetCurrentHP(blue) <= (SmiteCalc + self.Dmg[0]) then
+								CastTargetSpell(blue,useSmite)
+								CastTargetSpell(blue,0)
+							end
+						end
+					end
+					if baron ~= nil and GetObjectName(baron) == "SRU_Baron" and ValidTarget(baron, 750) and Settings.AutoSmiteQ.baron:Value() then
+						if Settings.AutoSmiteQ.onSmite:Value() == 1 then	
+							if GetCurrentHP(baron) <= SmiteCalc then
+								CastTargetSpell(baron,useSmite)
+							end
+						elseif Settings.AutoSmiteQ.onSmite:Value() == 2 then
+							if GetCurrentHP(baron) <= (SmiteCalc + self.Dmg[0]) then
+								CastTargetSpell(baron,useSmite)
+								CastTargetSpell(baron,0)
+							end
+						end
+					end
+					if Gromp ~= nil and GetObjectName(Gromp) == "SRU_Gromp" and ValidTarget(Gromp, 750) and Settings.AutoSmiteQ.gromp:Value() then
+						if Settings.AutoSmiteQ.onSmite:Value() == 1 then	
+							if GetCurrentHP(Gromp) <= SmiteCalc then
+								CastTargetSpell(Gromp,useSmite)
+							end
+						elseif Settings.AutoSmiteQ.onSmite:Value() == 2 then
+							if GetCurrentHP(Gromp) <= (SmiteCalc + self.Dmg[0]) then
+								CastTargetSpell(Gromp,useSmite)
+								CastTargetSpell(Gromp,0)
+							end
+						end
+					end
+			end
+		end
+	end
+
+
+	function Aatrox:Tick()
+		if KeyIsDown(32) then 
+			self:Combo(GetCurrentTarget())
+		end
+		if KeyIsDown(string.byte("C")) then 
+			self:Harass(GetCurrentTarget()) 
+		end
+		self:AutoSkillLevelUp()
+		self:HealMeHealAlly()
+		self:Checks()
+		self:AutoIgnite()
+		self:KillSteal()
+		self:AutoSmiteAndOrQ()
+	end
+	function Aatrox:Draw()
+		
+		self:DmgDrawing()
+		self:ChooseSkin()
+		self:ModelChanger()
+		if not Settings.drawing.mDraw:Value() then
+			for i,s in pairs({"Q","W","E","R"}) do
+			    if Settings.drawing[s]:Value() then
+			      DrawCircle(myHero.pos, self.SpellRanges[i-1].range, 1, 32, Settings.drawing[s.."c"]:Value())
+			    end
+			end
+		end
+	end ]]
 
 -- soon Gragas, Shaco
 
