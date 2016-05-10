@@ -1,4 +1,4 @@
-local ver = "3.05"
+local ver = "3.04"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
