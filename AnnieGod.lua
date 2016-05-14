@@ -1,4 +1,4 @@
-local ver = "3.06"
+local ver = "3.07"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -20,7 +20,7 @@ class "GAnnie"
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
  require('MixLib')
- LoadMixLib()
+ Mix:LoadPred()
 else
  PrintChat("MixLib not found. Please wait for download.")
  DownloadFileAsync("https://raw.githubusercontent.com/VTNEETS/NEET-Scripts/master/MixLib.lua", COMMON_PATH.."MixLib.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
