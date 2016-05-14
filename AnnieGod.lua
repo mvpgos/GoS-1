@@ -41,7 +41,7 @@ function GAnnie:LoadValues()
     self.Ignite = Mix:GetOtherSlot("Ignite")
     self.Flash = Mix:GetOtherSlot("Flash")
     self.data = function(spell) return myHero:GetSpellData(spell) end
-    self.Q = { Range = self.data(_Q).range, Speed = 1500, Delay = 0.25, Damage = function(unit) return myHero:CalcMagicDamage(unit, 45 + 35*self.data(_Q).level + 0.8*myHero.ap) end }
+    self.Q = { Range = self.data(_Q).range, Speed = 1620, Delay = 0.25, Damage = function(unit) return myHero:CalcMagicDamage(unit, 45 + 35*self.data(_Q).level + 0.8*myHero.ap) end }
     self.W = { Range = self.data(_W).range, Speed = math.huge, Delay = 0.25, Width = 80, Damage = function(unit) return myHero:CalcMagicDamage(unit, 25 + 45*self.data(_W).level + 0.85*myHero.ap) end }
     self.R = { Range = self.data(_R).range, Speed = math.huge, Delay = 0.25, Width = 250, Damage = function(unit) return myHero:CalcMagicDamage(unit, 50 + 125*self.data(_R).level + 0.8*myHero.ap) end }
     QT = TargetSelector(self.Q.maxRange, 8, DAMAGE_MAGIC)
