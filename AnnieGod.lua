@@ -1,4 +1,4 @@
-local ver = "3.07"
+local ver = "3.08"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -54,7 +54,7 @@ end
 
 function GAnnie:CreateMenu()
   self.cfg = MenuConfig("GAnnie", "God Annie Rework")
-    self.cfg:Info("info", "Script Version: 0.01")
+    self.cfg:Info("info", "Script Version: "..ver)
 
     --[[ Combo Menu ]]--
     self.cfg:Menu("cb", "Combo")
@@ -103,6 +103,10 @@ function GAnnie:CreateMenu()
         self.cfg.ult.fult:Slider("x1", "If can stun x enemy", 3, 1, 5, 1)
         self.cfg.ult.fult:Slider("x2", "If ally around >=", 1, 0, 5, 1)
       end
+
+    self.cfg:Menu("Sk", "Skin Changer")
+      --self.cfg.Sk:Slider("SkS", "Select skin", 10, 0, 10)
+      self.cfg.Sk:DropDown("SkS", "Select Skin", 10, {"Classic", "Goth Annie", "Red Riding Annie", "Annie in Wonderland", "Prom Queen Annie", "FrostFire Annie", "Reverse Annie", "FrankenTibbers Annie", "Panda Annie", "SweetHeart Annie", "Hextech Annie"})
 
     --[[ Drawings Menu ]]--
     self.cfg:Menu("dw", "Drawings Mode")
@@ -233,6 +237,13 @@ function GAnnie:LastHit()
     end
 end
 
+function GAnnie:SkinChanger()
+    if self.cfg.Sk.SkS:Value() ~= lastSkin then
+      lastSkin = self.cfg.Sk.SkS:Value()
+      HeroSkinChanger(myHero, self.cfg.Sk.SkS:Value() -1 )
+    end
+end
+
 function GAnnie:LaneClear()
     for m, minion in pairs(minionManager.objects) do
       if ((self.cfg.lc.eb:Value() and self.stun == false) or self.cfg.lc.eb:Value() == false) and minion.team == MINION_ENEMY and ValidTarget(minion, self.Q.Range) and minion.name:lower():find("minion_") then
@@ -278,6 +289,7 @@ function GAnnie:Drawings(myHero)
     if myHero.dead then return end
     if self.cfg.dw.HB:Value() then self:DmgHPBar() end
     self:DrawRange()
+    self:SkinChanger()
 end
 
 function GAnnie:DrawRange()
