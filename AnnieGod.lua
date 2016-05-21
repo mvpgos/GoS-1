@@ -1,4 +1,4 @@
-local ver = "3.101"
+local ver = "3.11"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -188,7 +188,7 @@ function GAnnie:Tick(myHero)
 
     if IsReady(_R) then
       self:CheckR()
-      if self.cfg.ult.fult.eb1:Value() and ((self.cfg.ult.fult.eb2:Value() == 1 and Mix:Mode() == "Combo") or self.cfg.ult.fult.eb2:Value() == 1) then self:FlashR() end
+      if self.Flash and self.cfg.ult.fult.eb1:Value() and ((self.cfg.ult.fult.eb2:Value() == 1 and Mix:Mode() == "Combo") or self.Flash and self.cfg.ult.fult.eb2:Value() == 1) then self:FlashR() end
     end
 
     if IsReady(_E) and self.cfg.misc.E.eb1:Value() and EnemiesAround(myHero.pos, 1500) == 0 and not self.stun then CastSpell(_E) end
