@@ -1,4 +1,4 @@
-local ver = "3.09"
+local ver = "3.10"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -37,8 +37,8 @@ function GAnnie:__init()
 end
 
 function GAnnie:LoadValues()
-    self.Ignite = Mix:GetOtherSlot("Ignite")
-    self.Flash = Mix:GetOtherSlot("Flash")
+    self.Ignite = MixLib:GetOtherSlot("Ignite")
+    self.Flash = MixLib:GetOtherSlot("Flash")
     self.data = function(spell) return myHero:GetSpellData(spell) end
     self.Q = { Range = self.data(_Q).range, Speed = 1620, Delay = 0.25, Damage = function(unit) return myHero:CalcMagicDamage(unit, 45 + 35*self.data(_Q).level + 0.8*myHero.ap) end }
     self.W = { Range = self.data(_W).range, Speed = math.huge, Delay = 0.25, Width = 80, Damage = function(unit) return myHero:CalcMagicDamage(unit, 25 + 45*self.data(_W).level + 0.85*myHero.ap) end }
