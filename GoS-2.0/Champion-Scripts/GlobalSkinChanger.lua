@@ -1,4 +1,4 @@
-local ver = "0.1"
+local ver = "0.11"
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New Version Found " .. data)
@@ -13,9 +13,13 @@ GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.
 Global = MenuConfig("Global Skin Changer", "Global Skin Changer")
 Global:Menu("a1st", "On/Off")
 Global.a1st:Boolean("OnOff", "Enable Skin Changer", true)
+Global.a1st:Boolean("enemy", "Change enemy's skin", false)
 Global.a1st:Info("Tere", "To change skin press '+' or '-' ")
 Global.a1st:Empty("fs", 0)
 Global.a1st:Boolean("Value", "Enable Value text", true)
+Global:Menu("a2st", "Version")
+Global.a2st:Info("r24", "Welcome, "..GetUser())
+Global.a2st:Info("Te2re", "Current Version: "..ver)
 
 local SetDCP, GlobalSkin = 0
 local function GlobalSkinChanger()
@@ -25,6 +29,19 @@ local function GlobalSkinChanger()
 			GlobalSkin = SetDCP
 		end
 	else HeroSkinChanger(myHero, 0) SetDCP = 0
+	end
+	if Global.a1st.enemy:Value() then
+		for _, enemy in pairs(GetEnemyHeroes()) do
+			if enemy ~= nil then
+				HeroSkinChanger(enemy, SetDCP)
+			end
+		end
+	else
+		for _, enemy in pairs(GetEnemyHeroes()) do
+			if enemy ~= nil then 
+				HeroSkinChanger(enemy, 0) SetDCP = 0
+			end
+		end
 	end
 end
 local function ValueDrawing()
