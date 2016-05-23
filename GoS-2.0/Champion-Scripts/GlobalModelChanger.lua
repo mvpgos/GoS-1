@@ -1,4 +1,4 @@
-local ver = "0.1"
+local ver = "0.11"
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New Global Model Changer Version Found " .. data)
@@ -33,7 +33,7 @@ Global:Menu("Info", "Version & Info")
 	Global.Info:Info("Ee", "Current Version: "..ver)
 
 local MobId = {
-	[1]	= "SRU_RiftHerald",
+	[1]		= "SRU_RiftHerald",
 	[2] 	= "SRU_Krug",
 	[3] 	= "Sru_Razorbeak",
 	[4] 	= "SRU_Dragon_Water",
@@ -188,20 +188,15 @@ local function ValueDrawing()
         DrawText("Model Value: "..SetDCP, 20, WorldToScreen(0, GetOrigin(myHero)).x, WorldToScreen(0, GetOrigin(myHero)).y, ARGB(255, 247, 8, 64))
     end
 end
-local function ReturnNormal()
-    if SetDCP < 0 then SetDCP = 0 end
-end
 OnWndMsg(function(msg, wParam)
   if msg == 256 and wParam == 187 then
     SetDCP = SetDCP + 1
   end
-  if msg == 256 and wParam == 189 then
+  if msg == 256 and wParam == 189  and SetDCP > 0 then
     SetDCP = SetDCP - 1
   end
 end)
 OnDraw(function(myHero)
-    ReturnNormal()
     ValueDrawing()
     GlobalModelChanger()
 end)
-
