@@ -33,7 +33,7 @@ Global:Menu("Info", "Version & Info")
 	Global.Info:Info("Ee", "Current Version: "..ver)
 
 local MobId = {
-	[1]		= "SRU_RiftHerald",
+	[1]	= "SRU_RiftHerald",
 	[2] 	= "SRU_Krug",
 	[3] 	= "Sru_Razorbeak",
 	[4] 	= "SRU_Dragon_Water",
