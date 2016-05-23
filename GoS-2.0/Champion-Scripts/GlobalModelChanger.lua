@@ -1,4 +1,4 @@
-local ver = "0.11"
+local ver = "0.12"
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New Global Model Changer Version Found " .. data)
@@ -10,12 +10,23 @@ function AutoUpdate(data)
 end 
 GetWebResultAsync("https://raw.githubusercontent.com/estruptum/GoS/master/GoS-2.0/Champion-Scripts/GlobalModelChanger.version", AutoUpdate)
 
+if not DirExists(SOUNDS_PATH.. "\\DragonSounds\\") then
+  CreateDir(SOUNDS_PATH.."\\DragonSounds\\")
+end
+
+if not FileExist(SOUNDS_PATH.."//DragonSounds//DragonSound.wav") then
+   PrintChat("DragonSound.wav not found. Please wait for download.")
+   DownloadFileAsync("https://raw.githubusercontent.com/estruptum/GoS/master/Dragon-Sounds/DragonSound.wav", SOUNDS_PATH.."//DragonSounds//DragonSound.wav", function() PrintChat("File downloaded succesfully, press 2x f6!") return end)
+end
+
 Global = MenuConfig("Global Model Changer", "Global Model Changer")
 Global:Menu("a1st", "On/Off")
 	Global.a1st:Boolean("OnOff", "Enable Model Changer", true)
 	Global.a1st:Info("Tere", "To change Model press '+' or '-' ")
 	Global.a1st:Empty("fs", 0)
 	Global.a1st:Boolean("Value", "Enable Model Value text", true)
+  Global.a1st:Empty("fdsw", 0)
+  Global.a1st:Boolean("Sound", "Enable Dragon Sound", true)
 	Global.a1st:Empty("gd", 0)
 	Global.a1st:Info("a", "Value 1: Rift Herald")
 	Global.a1st:Info("aad", "Value 2: Krug")
@@ -189,13 +200,18 @@ local function ValueDrawing()
     end
 end
 OnWndMsg(function(msg, wParam)
-  if msg == 256 and wParam == 187 then
-    SetDCP = SetDCP + 1
-  end
   if msg == 256 and wParam == 189  and SetDCP > 0 then
     SetDCP = SetDCP - 1
   end
-GlobalModelChanger()
+  if msg == 256 and wParam == 187 then
+    if Global.a1st.Sound:Value() then
+      if SetDCP >= 4 and SetDCP <= 7 then
+        PlaySound(SOUNDS_PATH.. "//DragonSounds//DragonSound.wav")
+      end
+    end
+    SetDCP = SetDCP + 1
+  end
+	GlobalModelChanger()
 end)
 OnDraw(function(myHero)
     ValueDrawing()
