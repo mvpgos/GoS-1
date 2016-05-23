@@ -1,4 +1,4 @@
-local ver = "0.12"
+local ver = "0.13"
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
         PrintChat("New Global Model Changer Version Found " .. data)
