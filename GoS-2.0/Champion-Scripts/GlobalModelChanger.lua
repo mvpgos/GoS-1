@@ -195,7 +195,7 @@ OnWndMsg(function(msg, wParam)
   if msg == 256 and wParam == 189  and SetDCP > 0 then
     SetDCP = SetDCP - 1
   end
-	GlobalModelChanger()
+GlobalModelChanger()
 end)
 OnDraw(function(myHero)
     ValueDrawing()
